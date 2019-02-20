@@ -1,0 +1,95 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+<?php
+define(PID,$this->param['exhibitor_category_id'])?>
+
+<?php function select_list($plist){
+ foreach($plist as $list){?>
+<option value="<?php echo $list['exhibitor_category_id'];?>" <?php if($list['exhibitor_category_id']==PID){ echo "SELECTED";}?>><?php echo $list['category_name'];?></option>
+<?php if(isset($list['son_cate'])){?>
+<?php select_list($list['son_cate']);}}}?>
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/exhibitor/list" class="button button-blue">返回列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">所属分类</div>
+                <div class="fl pt-w-85">
+                    <div class="select">
+                        <select name="exhibitor_category_id" >
+                        <option value=""> - 请选择 - </option>
+                            <?php select_list($this->category_info );?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">展商名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="name" value="<?php echo $this->param['name']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">展商名称[EN]</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="name_en" value="<?php echo $this->param['name_en']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">上传LOGO</div>
+                <div class="fl pt-w-85">    <input name="logo" type="text" id="logo" size="50" class="input px-w-300" value="<?php echo $this->param['logo'];?>"/>
+                    <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=logo&backview=view_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img src="<?php if($this->param['logo']) {echo DOMAIN_IMG."/".$this->param['logo'];} else { echo $this->yulan_jpg; }?>" id="view_img" />
+                    </div></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">展位</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="position" value="<?php echo $this->param['position']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->param['sort_id'] ? $this->param['sort_id'] : 255; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

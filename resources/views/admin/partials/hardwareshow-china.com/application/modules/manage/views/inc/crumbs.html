@@ -1,0 +1,9 @@
+<div class="page-location" id="J_container_location">
+    <ul class="page-list clearfix">
+        <li><a href="/">管理首页</a></li>
+        <?php foreach($this->clist as $list){ ?>
+              <li><a href="<?php echo $list['link']; ?>"><?php echo $list['menu_name']; ?></a></li>
+        <?php } ?>
+
+    </ul>
+</div>

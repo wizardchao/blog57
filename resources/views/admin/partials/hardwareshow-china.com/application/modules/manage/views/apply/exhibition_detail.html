@@ -1,0 +1,155 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix mt20">
+                <div class="fl col-label pt-w-15 fwb fz16">用户提交信息</div>
+                <div class="fl pt-w-85"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">公司名称</div>
+                <div class="fl pt-w-85"><?php echo $this->param['company_name']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">城市/国家</div>
+                <div class="fl pt-w-85"><?php echo $this->param['area'].'/'.$this->param['country']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系地址</div>
+                <div class="fl pt-w-85"><?php echo $this->param['address']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系人</div>
+                <div class="fl pt-w-85"><?php echo $this->param['contact']; ?><?php echo $this->param['gender']==1?'先生':'女士'; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系电话</div>
+                <div class="fl pt-w-85"><?php echo $this->param['tel']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系手机</div>
+                <div class="fl pt-w-85"><?php echo $this->param['mobile']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系邮箱</div>
+                <div class="fl pt-w-85"><?php echo $this->param['email']; ?></div>
+            </div>
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">摊位要求</div>
+								<div class="fl pt-w-85">
+										<?php foreach($this->space_list as $key =>  $list) { ?>
+										<label class="label-ele J_btn_outlink">
+												<input class="radio" type="checkbox" value="<?php echo $key; ?>" <?php if(in_array($key,$this->param['space'])) {echo "CHECKED";}?> disabled>
+												<span class="radioInput"></span>
+												<em><?php echo $list;?></em>
+										</label>
+										<?php } ?>
+								</div>
+						</div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品类别</div>
+                <div class="fl pt-w-85">
+                    <?php foreach($this->p_ex_list as $val) { ?>
+                    <label class="label-ele J_btn_outlink">
+                        <em><?php echo $val['category_name'];?></em>
+                    </label>
+										<br/>
+										<?php foreach($val['child'] as $list) { ?>
+										<label class="label-ele J_btn_outlink">
+												<input class="radio" type="checkbox" value="<?php echo $list['exhibitor_category_id']; ?>" <?php if(in_array($list['exhibitor_category_id'],$this->param['desc'])) {echo "CHECKED";}?> disabled>
+												<span class="radioInput"></span>
+												<em><?php echo $list['category_name'];?></em>
+										</label>
+										  <?php } ?>
+												<br/>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">其他</div>
+                <div class="fl pt-w-85"><?php echo $this->param['other']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">提交时间</div>
+                <div class="fl pt-w-85"><?php echo date('Y-m-d H:i:s', $this->param['tm_create']); ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">提交IP</div>
+                <div class="fl pt-w-85 c9"><?php echo $this->param['submit_ip']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <!-- <input type="submit" class="button button-blue" > -->
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="返回">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="content"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    $(function(){
+        $('.J_is_banner_btn').on('click', function(e){
+            var _this = $(this),
+                _type = _this.attr('data-type');
+
+            if( _type == 0 ){
+                $('.J_is_banner').show();
+            } else {
+                $('.J_is_banner').hide();
+            }
+        });
+    });
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

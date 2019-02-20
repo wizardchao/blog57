@@ -1,0 +1,215 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+<?php
+define(PID,$this->param['category_id'])?>
+
+<?php function select_list($plist){
+ foreach($plist as $list){?>
+<option value="<?php echo $list['category_id'];?>" <?php if($list['category_id']==PID){ echo "SELECTED";}?>><?php echo $list['category_name'];?></option>
+<?php if(isset($list['son_cate'])){?>
+<?php select_list($list['son_cate']);}}}?>
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/news/news_list" class="button button-blue">返回列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">资讯分类</div>
+                <div class="fl pt-w-85">
+                    <div class="select">
+                        <select name="category_id" >
+                        <option value=""> - 请选择 - </option>
+                            <?php select_list($this->category_info );?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">资讯标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-400" name="news_title" value="<?php echo $this->param['news_title']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">发布日期</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="news_tm_publish" value="<?php echo $this->param['news_tm_publish']; ?>" placeholder="例：2018-8-14 不填默认当前时间"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">上传图片</div>
+                <div class="fl pt-w-35">    <input name="pic" type="text" id="news_img" size="50" class="input px-w-300" value="<?php echo $this->param['news_img'];?>"/><br/>
+
+                    <iframe src="/manage/upload/index/?backinput=news_img&backview=view_news_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img  src="<?php if($this->param['news_img']) {echo DOMAIN_IMG."/".$this->param['news_img'];} else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+                    </div></div>
+<!--
+										<div class="fl col-label pt-w-15">M端图片</div>
+										<div class="fl pt-w-35">    <input name="news_m_img" type="text" id="m_img" size="50" class="input px-w-300" value="<?php echo $this->param['news_m_img'];?>"/><br/>
+
+												<iframe src="/manage/upload/index/?backinput=m_img&backview=view_m_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+												<div class="view_img">
+														<img  src="<?php if($this->param['news_m_img']) {echo DOMAIN_IMG."/".$this->param['news_m_img'];} else { echo $this->yulan_jpg; }?>" id="view_m_img" />
+												</div></div> -->
+            </div>
+						<!-- <div class="row clearfix">
+                <div class="fl col-label pt-w-15">平板图片</div>
+                <div class="fl pt-w-35">    <input name="news_pad_img" type="text" id="pad_img" size="50" class="input px-w-300" value="<?php echo $this->param['news_pad_img'];?>"/><br/>
+
+                    <iframe src="/manage/upload/index/?backinput=pad_img&backview=view_pad_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img  src="<?php if($this->param['news_pad_img']) {echo DOMAIN_IMG."/".$this->param['news_pad_img'];} else { echo $this->yulan_jpg; }?>" id="view_pad_img" />
+                    </div></div>
+
+										<div class="fl col-label pt-w-15">PC端图片</div>
+										<div class="fl pt-w-35">    <input name="news_pc_img" type="text" id="pc_img" size="50" class="input px-w-300" value="<?php echo $this->param['news_pc_img'];?>"/><br/>
+
+												<iframe src="/manage/upload/index/?backinput=pc_img&backview=view_pc_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+												<div class="view_img">
+														<img  src="<?php if($this->param['news_pc_img']) {echo DOMAIN_IMG."/".$this->param['news_pc_img'];} else { echo $this->yulan_jpg; }?>" id="view_pc_img" />
+												</div></div>
+            </div> -->
+
+            <!-- <div class="row clearfix">
+                <div class="fl col-label pt-w-15">首页显示</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="home_show" value="0" <?php if($this->param['home_show']==0) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>否</em>
+                    </label>
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="home_show" value="1" <?php if($this->param['home_show']==1) {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>是</em>
+                    </label>
+                </div>
+            </div> -->
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">链接类型</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele J_btn_link_type" data-type="1">
+                        <input class="radio" type="radio" name="type" value="1" <?php if($this->param['type']==1 || $this->param['type'] == '') {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>内部链接</em>
+                    </label>
+                    <label class="label-ele J_btn_link_type" data-type="2">
+                        <input class="radio" type="radio" name="type" value="2" <?php if($this->param['type']==2) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>外部链接</em>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row clearfix <?php echo $this->param['type'] == 1 ? 'none' : ''; ?>" id="J_view_link">
+                <div class="fl col-label pt-w-15">外部链接</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="news_link" value="<?php echo $this->param['news_link']; ?>" placeholder="例：//www.mi.com"></div>
+            </div>
+
+            <div class="row clearfix <?php echo $this->param['type'] == 2 ? 'none' : ''; ?>" id="J_view_content">
+                <div class="fl col-label pt-w-15">资讯内容</div>
+                <div class="fl pt-w-84"><textarea name="content" style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['news_content'];?></textarea></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">页面关键字</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-400" name="page_keywords" value="<?php echo $this->param['page_keywords']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">页面描述</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-400" name="page_description" value="<?php echo $this->param['page_description']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">静态页面名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="template_name" value="<?php echo $this->param['template_name']; ?>" placeholder="为空则使用静态页面设置的URL构成方式，不要加html后缀，不支持特殊字符"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->param['sort_id']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="content"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    $(function(){
+        $('.J_btn_link_type').on('click', function(e){
+            var _this = $(this),
+                _type = _this.attr('data-type');
+
+            if( _type == 1 ){
+                $('#J_view_link').hide();
+                $('#J_view_content').show();
+            } else {
+                $('#J_view_link').show();
+                $('#J_view_content').hide();
+            }
+        });
+    });
+
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

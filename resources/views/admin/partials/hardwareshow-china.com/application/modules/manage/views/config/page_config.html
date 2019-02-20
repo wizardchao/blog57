@@ -1,0 +1,182 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+			<!-- 横向菜单 { -->
+			<?php
+				 $nav['btns'] = array('');
+					 include($this->_base_name . '/inc/cross_menu.html');
+			?>
+			<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <!--<div class="forms">-->
+            <!-- <div class="row clearfix">
+                <div class="fl col-label pt-w-15">视频图片</div>
+                <div class="fl pt-w-85"><input name="page_video_img" type="text" id="news_img" size="50" class="input px-w-300"
+                                               value="<?php echo $this->param['page_video_img'];?>"/> <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=news_img&backview=view_news_img" frameborder="0"
+                            style="width: 100%; height: 70px;" scrolling="no"></iframe>
+                    <br/>
+
+                    <div class="view_img">
+                        <img  src="<?php if($this->param['page_video_img']) {echo DOMAIN_IMG.$this->param['page_video_img'];}
+                        else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">视频地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="page_video_link"
+                                               value="<?php echo $this->param['page_video_link']; ?>" placeholder="例：//www.anufoodchina.huixianginc.com/"></div>
+            </div> -->
+
+
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">侧边栏联系方式</div>
+                <div class="fl pt-w-84"><textarea name="contact_way"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+                    param['contact_way'];?></textarea></div>
+            </div>
+
+            <!-- <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">展商预订文字介绍</div>
+                <div class="fl pt-w-84"><textarea name="order_desc"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+                    param['order_desc'];?></textarea></div>
+            </div>
+
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">买家邀约文字介绍1</div>
+                <div class="fl pt-w-84"><textarea name="f_buyer_desc"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+                    param['f_buyer_desc'];?></textarea></div>
+            </div>
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">买家邀约文字介绍2</div>
+                <div class="fl pt-w-84"><textarea name="s_buyer_desc"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+                    param['s_buyer_desc'];?></textarea></div>
+            </div> -->
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" value="提交">
+                    <input type="button" class="button button-gray" value="取消" onclick="javascript:history.back(-1)">
+                </div>
+            </div>
+            <!--</div>-->
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="contact_way"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="f_buyer_desc"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="s_buyer_desc"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="order_desc"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

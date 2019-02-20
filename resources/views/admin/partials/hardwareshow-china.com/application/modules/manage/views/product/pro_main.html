@@ -1,0 +1,104 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+<?php
+define(PID,$this->param['category_id'])?>
+
+<?php function select_list($plist){
+ foreach($plist as $list){?>
+<option value="<?php echo $list['category_id'];?>" <?php if($list['category_id']==PID){ echo "SELECTED";}?>><?php echo $list['category_name'];?></option>
+<?php if(isset($list['son_cate'])){?>
+<?php select_list($list['son_cate']);}}}?>
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+            <div class="right-btns">
+                <a href="/manage/product/pro_list" class="button button-blue">返回产品列表</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品分类</div>
+                <div class="fl pt-w-160">
+                    <div class="select">
+                        <select name="category_id" >
+                        <option value=""> - 请选择 - </option>
+                            <?php select_list($this->category_info );?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="name" value="<?php echo $this->param['name']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品主图</div>
+                <div class="fl pt-w-85">    <input name="main_img_url" type="text" id="main_img_url" size="50" class="form-control" value="<?php echo $this->param['main_img_url'];?>"/> <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=main_img_url&backview=view_news_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img style="width:120px;" src="<?php if($this->param['view_news_img']) {echo DOMAIN_IMG."/".$this->param['view_news_img'];} else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+                    </div></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">库存量</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="stock" value="<?php echo $this->param['stock']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品单价</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="price" value="<?php echo $this->param['price']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品摘要</div>
+                <div class="fl pt-w-85"><textarea
+                        name="summary" class="textarea px-w-500"><?php echo $this->param['summary'];?></textarea>
+                </div>
+            </div>
+
+
+
+            <!--<div class="row clearfix">-->
+                <!--<div class="fl col-label pt-w-15">排序</div>-->
+                <!--<div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->param['sort_id']; ?>"></div>-->
+            <!--</div>-->
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

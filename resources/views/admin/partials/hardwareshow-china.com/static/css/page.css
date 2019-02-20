@@ -1,0 +1,174 @@
+@media (min-width: 1400px){
+    .logo a .imgholder {
+        width: 300px !important;
+        max-width: 300px !important;
+    }
+
+}
+@media (min-width: 800px){
+    .logo a .imgholder {
+        width: 220px;
+        max-width: 220px;
+    }
+}
+
+/*分页样式*/
+.page-skip{
+   margin: 35px 0 35px;
+}
+.page-skip span,.page-skip a{
+   margin-right: 3px;
+   display: inline-block;
+   padding:0 20px;
+   min-width: 26px;
+   height: 40px;
+   line-height: 40px;
+   text-align: center;
+   font-size: 14px;
+   color: #999;
+   border: 1px solid #dedede;
+   text-decoration: none;
+   border-radius: 3px;
+    margin-bottom: 3px;
+}
+ .page-skip .disabled{
+   background-color: #dedede;
+}
+.page-skip span{
+   background-color:#EB0000 ;
+   color:white;
+}
+
+.generalize .sidebar_ad .inner{
+    min-height: 500px;
+}
+.generalize .right {
+    width: 280px;
+    height: 802px;
+    margin-left: 8px;
+}
+.generalize .right .list {
+    border-top: 4px solid #ff0000;
+}
+.generalize .right .list li {
+    height: 30px;
+    padding-left: 27px ;
+    margin: 24px 0 0 0;
+    font: 20px/30px "";
+}
+
+
+.generalize .right .tupian{
+    width: 280px;
+    height: 180px;
+    margin-top: 30px;
+}
+.generalize .right .tupian img{
+    width:100%;
+    height: 100%;
+}
+
+.generalize  .active {
+    border-left: 4px solid #ff0000;
+}
+.generalize .right>.list>li:hover {
+    border-left: 4px solid #ff0000;
+}
+.generalize .right .contact {
+padding-top: 60px;
+}
+.generalize .right .contact h2 {
+font-size: 24px;
+color: #000;
+margin-bottom: 20px;
+}
+.generalize .right .contact strong {
+font-size: 18px;
+font-weight: bold;
+color: #333;
+}
+.generalize .right .contact p {
+font-size: 16px;
+color: #666;
+line-height: 28px;
+margin-bottom: 20px;
+}
+.content_info{min-height:1000px; padding:30px 0 0px 0;}
+
+.e2 h3{
+    margin: 30px 0 20px 0 ;
+    font-size:16px;
+}
+.e2 .tupian{
+    overflow: hidden;
+}
+.e2 .tupian1{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.e2 .tupian1>div{
+    max-width: 235px;
+    /* max-height:153px ; */
+    padding:0 3px 20px 0;
+}
+.e2 .tupian1>div img{
+    width: 100%;
+    height: 100%;
+}
+
+/*E4*/
+.e4 ul{
+    margin-bottom: 30px;
+
+}
+.e4 ul li{
+    font-size:18px;
+    margin-top: 35px;
+    display: flex;
+    line-height: 30px;
+    justify-content: space-between;
+    padding-left: 0;
+}
+.e4 ul li::before{
+    content: "";
+    display: none;
+
+}
+.e4 ul li span img{
+    vertical-align: middle;
+}
+
+.e4 ul li span:last-child{
+    box-sizing:border-box ;
+    padding-left: 12px;
+    min-width: 78px;
+}
+
+
+/*E5*/
+
+.e5 h3{
+    font-size:24px;
+    margin: 20px 0 40px 0;
+    font-weight: normal;
+
+}
+.e5 .box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*justify-content: flex-start;*/
+    max-width: 730px;
+    margin-bottom: 40px;
+}
+.e5 .box>div{
+    box-sizing: border-box;
+    padding:0 20px 20px 0;
+
+    width: 33.3%;
+}
+.e5 .box>div img{
+    width: 100%;
+     text-decoration: none;;
+}

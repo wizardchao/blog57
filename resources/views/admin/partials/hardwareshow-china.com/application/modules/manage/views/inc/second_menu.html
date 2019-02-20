@@ -1,0 +1,8 @@
+<div class="nav-wrap">
+    <ul class="nav-lists clearfix">
+        <?php foreach($this->second_menu as $key => $list){ ?>
+        <li><a href="<?php echo $list['url'];?>" <?php if(($list['id']==$this->menu_id)){ $on_key= $key; ?>class="on"<?php } ?>><?php echo $list['menu_name'];?></a></li>
+        <?php } ?>
+    </ul>
+    <div id="navLine" class="nav-line"></div>
+</div>

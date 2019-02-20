@@ -1,0 +1,107 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/activity/ae" class="button button-blue">添加活动</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <div class="fl col-label px-w-60 lh-32">栏目标题</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['title'];?>" name="title">
+            </div>
+
+            <div class="fl col-label px-w-60 lh-32">栏目分类</div>
+            <div class="fl px-w-120 select ml20" >
+                <select name="activity_category_id">
+                    <option value="0" > - 请选择 - </option>
+                    <?php foreach($this->category_list as $list){ ?>
+                    <option value="<?php echo $list['activity_category_id'];?>" <?php if($this->param['activity_category_id']==$list['activity_category_id']){ echo "selected";}?>><?php echo $list['title']; ?></option>
+                    <?php  } ?>
+                </select>
+            </div>
+
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue ml20">搜索</a>
+            </div>
+        </form>
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-10 tc">编号</div>
+                    <div class="col pt-w-10">所属分类</div>
+                    <div class="col pt-w-40">标题</div>
+                    <div class="col pt-w-10 tc">首页显示</div>
+                    <div class="col pt-w-10 tc">排序</div>
+                    <div class="col pt-w-20 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->list as $rs){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-10 tc"><?php echo $rs['activity_id']; ?></div>
+                    <div class="col pt-w-10"><?php echo $rs['category_title'];?></div>
+                    <div class="col pt-w-40"><?php echo $rs['title'];?></div>
+                    <div class="col pt-w-10 tc"><?php echo $rs['is_home'] == 1 ? '是' : '';?></div>
+                    <div class="col pt-w-10 tc"><?php echo $rs['sort_id']; ?></div>
+                    <div class="col pt-w-20 tr pr5">
+                        <!-- <i><a href="/manage/activity/clist?activity_id=<?php echo $rs['activity_id']; ?>" class="button button-blue">活动文章</a></i> -->
+                        <i><a href="/manage/activity/ae?activity_id=<?php echo $rs['activity_id']; ?>" class="button button-blue">编辑</a></i>
+                        <i><a href="/manage/activity/del?activity_id=<?php echo $rs['activity_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">删除</a></i>
+                    </div>
+
+                        <?php
+                            foreach( $rs['child_list'] as $rsc ){
+                                if( $rs['child_list'] ) echo '</div><div class="row clearfix">';
+                        ?>
+                        <div class="col pt-w-20 tc"></div>
+                        <div class="col pt-w-60"><i class="level-label">—</i><?php echo $rsc['title'];?></div>
+                        <div class="col pt-w-20 tr pr5">
+                            <i><a href="/manage/activity/cae?view_activity_id=<?php echo $rsc['activity_id']; ?>&activity_child_id=<?php echo $rsc['activity_child_id']; ?>" class="button button-blue">编辑</a></i>
+                            <i><a href="/manage/activity/cdel?activity_id=<?php echo $rsc['activity_id']; ?>&activity_child_id=<?php echo $rsc['activity_child_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">删除</a></i>
+                        </div>
+                        <?php
+                            }
+                        ?>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,129 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/link/link_list" class="button button-blue">返回列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">链接标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="link_title" value="<?php echo $this->param['link_title']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">链接类型</div>
+                <div class="fl pt-w-85">
+
+                    <label class="label-ele J_btn_outlink" 	<?php if($this->param['link_position_id']==2) { ?>style="display:none;"<?php } ?> data-type="1">
+                        <input class="radio" type="radio" name="link_category_id" value="1001" <?php if($this->param['link_category_id']==1001 ) {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>图片链接</em>
+                    </label>
+                    <label class="label-ele J_btn_outlink" data-type="2">
+                        <input class="radio" type="radio" name="link_category_id" value="1002" <?php if($this->param['link_category_id']==1002) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>文字链接</em>
+                    </label>
+                </div>
+            </div>
+
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">链接位置</div>
+								<div class="fl pt-w-85">
+										<label class="label-ele J_btn_outlink" data-type="1">
+												<input class="radio" type="radio" name="link_position_id" value="1" <?php if($this->param['link_position_id']==1) {echo "CHECKED";} ?> >
+												<span class="radioInput"></span>
+												<em>底部</em>
+										</label>
+										<label class="label-ele J_  btn_outlink" data-type="2">
+												<input class="radio" type="radio" name="link_position_id" value="2" <?php if($this->param['link_position_id']==2) {echo "CHECKED";} ?> >
+												<span class="radioInput"></span>
+												<em>不容错过</em>
+										</label>
+								</div>
+						</div>
+            <div class="row clearfix is_show">
+                <div class="fl col-label pt-w-15">上传图片</div>
+                <div class="fl pt-w-85"><input name="pic" type="text" size="50" id="link_img" class="input px-w-300"
+                                               value="<?php echo $this->param['link_img'];?>"/><br/>
+
+                    <iframe src="/manage/upload/index/?backinput=link_img&backview=view_link_img" frameborder="0"
+                            style="width: 100%; height: 70px;" scrolling="no"></iframe>
+                    <br/>
+
+                    <div class="view_img">
+                        <img src="<?php if($this->param['link_img']) {echo DOMAIN_IMG."/".$this->param['link_img'];}
+                        else { echo $this->yulan_jpg; }?>" id="view_link_img" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">链接地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="link_url" value="<?php echo $this->param['link_url']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id"
+                                               value="<?php echo $this->param['sort_id']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue">
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);"
+                           value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<script>
+    $(function(){
+        if($('input[name="link_category_id"]:checked').val()==1002){
+            $('.is_show').hide();
+        }else{
+            $('.is_show').show();
+        }
+        $('input[name="link_category_id"]').click(function () {
+                var url_mode =$('input[name="link_category_id"]:checked').val();
+                if(url_mode==1002){
+                    $('.is_show').hide();
+                }else{
+                    $('.is_show').show();
+                }
+
+                //alert(url_mode);
+            }
+
+        );
+    });
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

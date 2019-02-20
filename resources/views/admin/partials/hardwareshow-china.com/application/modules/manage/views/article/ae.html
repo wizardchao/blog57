@@ -1,0 +1,247 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- 2级菜单 { -->
+        <div class="nav-wrap">
+            <ul class="nav-lists clearfix">
+                <li><a href="/manage/about/about_list/">所有栏目</a></li>
+                <li><a href="/manage/article/index/" class="on">二级栏目</a></li>
+            </ul>
+            <div id="navLine" class="nav-line"></div>
+        </div>
+        <!-- } 2级菜单 -->
+
+        <!-- 3级菜单 { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+            <ul class="tabs-list clearfix">
+                <li><a href="/manage/article/index/" class="on">栏目列表</a></li>
+                <li><a href="/manage/article/category/">分类管理</a></li>
+            </ul>
+
+            <div class="right-btns">
+                <a href="/manage/article/index" class="button button-blue">返回列表</a>
+            </div>
+        </div>
+        <!-- } 3级菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">所属分类</div>
+                <div class="fl pt-w-85">
+                    <div class="select">
+                        <select name="article_category_id" >
+                            <option value=""> - 请选择 - </option>
+                            <?php
+                                foreach( $this->category_list as $rs ){
+                            ?>
+                            <option value="<?php echo $rs['article_category_id']; ?>" <?php if( $rs['article_category_id'] == $this->param['article_category_id'] ) echo 'selected'; ?>><?php echo $rs['title']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">类型</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele  J_btn_type" data-type="1">
+                        <input class="radio" type="radio" name="type" value="1" <?php if($this->param['type']==1 || $this->param['type'] == '') {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>文章</em>
+                    </label>
+                    <label class="label-ele J_btn_type" data-type="2">
+                        <input class="radio" type="radio" name="type" value="2" <?php if($this->param['type']==2) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>评语</em>
+                    </label>
+                </div>
+            </div>
+
+            <div class="J_view_comment <?php echo $this->param['type'] == 2 ? '' : 'none'; ?>">
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">评语内容</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="c_desc" value="<?php echo $this->param['c_desc']; ?>"></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">评语人</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="c_name" value="<?php echo $this->param['c_name']; ?>"></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">评语人职位</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="c_position" value="<?php echo $this->param['c_position']; ?>"></div>
+                </div>            
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">评语人公司</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="c_company" value="<?php echo $this->param['c_company']; ?>"></div>
+                </div>
+            </div>
+
+            <div class="J_view_article <?php echo ($this->param['type'] == 1 || $this->param['type'] == '') ? '' : 'none'; ?>">
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">标题</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-400" name="title" value="<?php echo $this->param['title']; ?>"></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">上传LOGO</div>
+                    <div class="fl pt-w-85">    <input name="logo" type="text" id="logo" size="50" class="input px-w-300" value="<?php echo $this->param['logo'];?>"/><br/>
+
+                        <iframe src="/manage/upload/index/?backinput=logo&backview=view_img_logo" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                        <div class="view_img">
+                            <img src="<?php if($this->param['logo']) {echo DOMAIN_IMG."/".$this->param['logo'];} else { echo $this->yulan_jpg; }?>" id="view_img_logo" />
+                        </div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">上传图片</div>
+                    <div class="fl pt-w-85">    <input name="pic" type="text" id="pic" size="50" class="input px-w-300" value="<?php echo $this->param['pic'];?>"/><br/>
+
+                        <iframe src="/manage/upload/index/?backinput=pic&backview=view_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                        <div class="view_img">
+                            <img  src="<?php if($this->param['pic']) {echo DOMAIN_IMG."/".$this->param['pic'];} else { echo $this->yulan_jpg; }?>" id="view_img" />
+                        </div></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">横幅banner</div>
+                    <div class="fl pt-w-85">
+                        <label class="label-ele J_is_banner_btn" data-type="1">
+                            <input class="radio" type="radio" name="is_banner" value="0" <?php if($this->param['is_banner']==0) {echo "CHECKED";}?>>
+                            <span class="radioInput"></span>
+                            <em>不需要</em>
+                        </label>
+                        <label class="label-ele J_is_banner_btn" data-type="0">
+                            <input class="radio" type="radio" name="is_banner" value="1" <?php if($this->param['is_banner']==1) {echo "CHECKED";} ?> >
+                            <span class="radioInput"></span>
+                            <em>需要</em>
+                        </label>
+                    </div>
+                </div>
+                <div class="row clearfix J_is_banner <?php echo $this->param['is_banner'] == 0 ? 'none' : ''; ?>">
+                    <div class="fl col-label pt-w-15">上传横幅banner</div>
+                    <div class="fl pt-w-85">    <input name="banner_img" type="text" id="banner_img" size="50" class="input px-w-300" value="<?php echo $this->param['banner_img'];?>"/><br/>
+
+                        <iframe src="/manage/upload/index/?backinput=banner_img&backview=view_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                        <div class="view_img">
+                            <img  src="<?php if($this->param['banner_img']) {echo DOMAIN_IMG."/".$this->param['banner_img'];} else { echo $this->yulan_jpg; }?>" id="view_img" />
+                        </div></div>
+                </div>
+                <div class="row clearfix J_is_banner <?php echo $this->param['is_banner'] == 0 ? 'none' : ''; ?>">
+                    <div class="fl col-label pt-w-15">横幅标题</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="banner_title" value="<?php echo $this->param['banner_title']; ?>"></div>
+                </div>
+                <div class="row clearfix J_is_banner <?php echo $this->param['is_banner'] == 0 ? 'none' : ''; ?>">
+                    <div class="fl col-label pt-w-15">横幅链接</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="banner_url" value="<?php echo $this->param['banner_url']; ?>"></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">内容</div>
+                    <div class="fl pt-w-84"><textarea name="content" style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['desc'];?></textarea></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">页面标题</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="page_title" value="<?php echo $this->param['page_title']; ?>"></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">页面关键字</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="page_keyword" value="<?php echo $this->param['page_keyword']; ?>"></div>
+                </div>
+                <div class="row clearfix">
+                    <div class="fl col-label pt-w-15">页面描述</div>
+                    <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="page_description" value="<?php echo $this->param['page_description']; ?>"></div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">静态页面名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="template_name" value="<?php echo $this->param['template_name']; ?>" placeholder="为空则使用静态页面设置的URL构成方式，不要加html后缀，不支持特殊字符"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->param['sort_id'] ? $this->param['sort_id'] : 255; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="content"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    $(function(){
+        $('.J_btn_type').on('click', function(e){
+            var _this = $(this),
+                _type = _this.attr('data-type');
+
+            if( _type == 1 ){
+                $('.J_view_article').show();
+                $('.J_view_comment').hide();
+            } else {
+                $('.J_view_article').hide();
+                $('.J_view_comment').show();
+            }
+        });
+
+        $('.J_is_banner_btn').on('click', function(e){
+            var _this = $(this),
+                _type = _this.attr('data-type');
+
+            if( _type == 0 ){
+                $('.J_is_banner').show();
+            } else {
+                $('.J_is_banner').hide();
+            }
+        });
+    });
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .download_list {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .download_list li {
+            float: left;
+            display: inline;
+            width: 100px;
+            padding: 5px;
+            background: #eeeeee;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+    <script language="javascript">
+        <!--
+        function chk() {
+            // if (document.up_att.title.value == '') {
+            //     alert('[ 系统提示 ]\n\n请输入标题！');
+            //     document.up_att.title.focus();
+            //     return false;
+            // }
+
+        }
+
+        -->
+    </script>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+    <tr>
+        <td colspan="2">
+
+            <ul class="download_list">
+                <?php
+                foreach ($this->data['attalist'] as $row){
+                ?>
+                <li>
+                    <img src="<?php echo $row['slide_img'] == '' ? '/static/css/yulan.jpg' : IMGDOMAIN.$row['slide_img'];?>"
+                         width="100" height="50" border="0"/><br/><?php echo $row['title'];?><br/>
+                    <a href="/manage/upload/deleteAtta?slide_id=<?php echo $row['slide_id'];?>&csrf_token=<?php echo $this->csrf_token;?>&e_slide_id=<?php echo $this->data['rd']; ?>&type=<?php echo $this->data['type']; ?>/"
+                       onclick="return confirm('[ 系统提示 ]\n\n确认删除吗？');">
+                        <img src="http://manage.winelords.cn/static/css/icon_del.gif" width="20" height="20" border="0"
+                             align="absmiddle"/>
+                    </a>
+                </li>
+                <?php
+                  }
+                ?>
+            </ul>
+
+        </td>
+    </tr>
+    <tr>
+        <td height="50" colspan="2"></td>
+    </tr>
+    <form action="/manage/upload/batch_uploads" method="post" enctype="multipart/form-data" name="up_att" id="up_att"
+          onSubmit="return chk()">
+        <tr>
+            <td colspan="2" bgcolor="#eeeeee" style="padding-left:10px;"><strong>[上传] &nbsp;&nbsp;&nbsp;</strong></td>
+        </tr>
+        <!--<tr bgcolor="#eee">-->
+            <!--<td width="10%" align="right" valign="middle"></td>-->
+            <!--<td width="90%" height="25" align="left" valign="middle">-->
+
+
+            <!--</td>-->
+        <!--</tr>-->
+        <tr bgcolor="#eee">
+            <td align="right">上传</td>
+            <td height="25" align="left" valign="middle">
+                <input name="pic_id" type="hidden" value="<?php echo $this->data['rd'];?>" class="input" id="pic_id"/>
+                <input name="userfile[]" type="file" class="text" id="upfile" size="63" multiple="multiple" >
+            </td>
+        </tr>
+        <!--<tr bgcolor="#eee">-->
+            <!--<td align="right">排序</td>-->
+            <!--<td height="25" align="left" valign="middle">-->
+                <!--<select name="px" id="px">-->
+                    <!--<?php for($px=1;$px<=100;$px++){ ?>-->
+                    <!--<option value="<?=$px;?>" <?php if($this->data['order_id']==$px) echo "SELECTED";?>/><?=$px;?></option>-->
+                    <!--<?php } ?>-->
+                <!--</select>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <tr bgcolor="#eee">
+            <td align="left">&nbsp;</td>
+            <td height="25" align="left" valign="middle">
+                <input type="hidden" value="<?php echo $this->data['type']; ?>" name="type">
+                <input name="Submit" type="submit" value=" 上 传 "/>
+            </td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>

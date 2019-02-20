@@ -1,0 +1,142 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+<?php
+define(PID,$this->param['pid'])?>
+
+<?php function select_list($plist){
+ foreach($plist as $list){?>
+<option value="<?php echo $list['id'];?>" <?php if($list['id']==PID){ echo "SELECTED";}?>><?php echo $list['menu_name'];?></option>
+<?php if(isset($list['son_cate'])){?>
+<?php select_list($list['son_cate']);}}}?>
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height: 40px;">
+            <i class="tabs-line"></i>
+
+            <div class="right-btns">
+                <a href="/manage/frontmenu/menu_add" class="button button-blue">添加菜单</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+        <!--<div class="forms">-->
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">上级菜单</div>
+                <div class="fl pt-w-85">
+                    <div  class="select">
+                        <select id='select' name="pid" >
+                            <option value="<?php echo $pid;?>"> - 请选择 - </option>
+
+                            <?php select_list($this->plist)?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">菜单名</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="menu_name" value="<?php echo $this->param['menu_name']; ?>" ></div>
+            </div>
+            <div id='class' class="row clearfix">
+                <div class="fl col-label pt-w-15">class名</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="menu_classname" value="<?php echo $this->param['menu_classname']; ?>"></div>
+            </div>
+            <div id='controller' class="row clearfix">
+                <div class="fl col-label pt-w-15">controller名</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="controller" value="<?php echo $this->param['controller']; ?>"></div>
+            </div>
+            <div id='action' class="row clearfix">
+                <div class="fl col-label pt-w-15">action名</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="action" value="<?php echo $this->param['action']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">单选框</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="view" value="1" <?php echo ($this->param['view']==1)?"checked":""; ?>>
+                        <span class="radioInput"></span>
+                        <em>显示</em>
+                    </label>
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="view" value="0" <?php echo ($this->param['view']==0)?"checked":""; ?>>
+                        <span class="radioInput"></span>
+                        <em>隐藏</em>
+                    </label>
+                </div>
+            </div>
+
+            <!--<div class="row clearfix">-->
+                <!--<div class="fl col-label pt-w-15">排序</div>-->
+                <!--<div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->param['sort_id']; ?>"></div>-->
+            <!--</div>-->
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <a href="javascript:document:form_sub.submit();" class="button button-blue">提交</a>
+                    <a href="javascript:history.back(-1)" class="button button-gray">取消</a>
+                </div>
+            </div>
+        <!--</div>-->
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<script>
+
+    //优化外部链接显示框
+    $(function(){
+
+        var a=$('#select').val();
+        //alert(a);
+        if(a == "" || a == null || a == undefined){
+            $("#controller").hide();
+            $("#action").hide();
+            $("#class").show();
+        }else{
+            $("#controller").show();
+            $("#action").show();
+            $("#class").hide();
+        }
+        $('#select').change(function () {
+            var a=$('#select').val();
+            //alert(a);
+            if(a == "" || a == null || a == undefined){
+               $("#controller").hide();
+                $("#action").hide();
+                $("#class").show();
+            }else{
+                $("#controller").show();
+                $("#action").show();
+                $("#class").hide();
+            }
+
+        })
+
+
+
+
+    });
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

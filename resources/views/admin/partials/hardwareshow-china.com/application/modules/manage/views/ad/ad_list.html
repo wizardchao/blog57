@@ -1,0 +1,72 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- 2级菜单 { -->
+        <div class="nav-wrap">
+            <ul class="nav-lists clearfix">
+                <li><a href="/manage/set/index/" >站点设置</a></li>
+                <li><a href="/manage/ad/ad_list/" class="on">广告位设置</a></li>
+                <li><a href="/manage/subscription/subscription_list/">邮件订阅</a></li>
+                <li><a href="/manage/set/menu_list/">菜单设置</a></li>
+            </ul>
+            <div id="navLine" class="nav-line"></div>
+        </div>
+        <!-- } 2级菜单 -->
+
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-25 tc">所属页面位置</div>
+                    <div class="col pt-w-25">标题</div>
+                    <div class="col pt-w-20 tc">图片</div>
+                    <div class="col pt-w-10 tc">链接</div>
+                    <div class="col pt-w-20 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->ad_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-25 tc"><?php echo $list['ad_key_name'];?></div>
+                    <div class="col pt-w-25"><?php echo $list['ad_title']; ?></div>
+                    <div class="col pt-w-20 tc"><a href="<?php echo $list['ad_img'];?>" target="_blank"><img src="<?php echo $list['ad_img'];?>" style="height:40px;"></a></div>
+                    <div class="col pt-w-10 tc"><?php echo $list['ad_link']; ?></div>
+                    <div class="col pt-w-20 tc lh-40">
+                        <a href="/manage/ad/ad_edit?id=<?php echo $list['ad_id']; ?>" class="mt5 button button-blue">编辑</a>
+                        <a href="/manage/ad/ad_list?id=<?php echo $list['ad_id']; ?>&ad_switch=<?php echo ($list['ad_switch']==1)?0:1; ?>" class="mt5 button button-blue"><?php echo ($list['ad_switch']==1)?'隐藏':'显示';?></a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

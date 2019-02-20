@@ -1,0 +1,113 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+	<div class="container">
+		<!-- 2级菜单 { -->
+		<div class="nav-wrap">
+			<ul class="nav-lists clearfix">
+				<li><a href="/manage/set/index/">站点设置</a></li>
+				<li><a href="/manage/ad/ad_list/" class="on">广告位设置</a></li>
+				<li><a href="/manage/subscription/subscription_list/">邮件订阅</a></li>
+				<li><a href="/manage/set/menu_list/">菜单设置</a></li>
+			</ul>
+			<div id="navLine" class="nav-line"></div>
+		</div>
+		<!-- } 2级菜单 -->
+
+		<!-- forms { -->
+		<form class="forms" method="post" action="" id="form_sub">
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">所属页面位置</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-300" name="ad_title" value="<?php echo $this->param['ad_key_name']; ?>" disabled></div>
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-300" name="ad_title" value="<?php echo $this->param['ad_title']; ?>"></div>
+
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">是否显示</div>
+				<div class="fl pt-w-35">
+					<label class="label-ele J_btn_outlink" data-type="1">
+						<input class="radio" type="radio" name="ad_switch" value="1" <?php if($this->param['ad_switch']==1) {echo "CHECKED";}?>>
+						<span class="radioInput"></span>
+						<em>是</em>
+					</label>
+					<label class="label-ele J_btn_outlink" data-type="0">
+						<input class="radio" type="radio" name="ad_switch" value="0" <?php if($this->param['ad_switch']==0) {echo "CHECKED";} ?> >
+						<span class="radioInput"></span>
+						<em>否</em>
+					</label>
+				</div>
+				<div class="fl col-label pt-w-15">首页展示</div>
+				<div class="fl pt-w-35">
+					<label class="label-ele J_btn_outlink" data-type="1">
+						<input class="radio" type="radio" name="ad_home" value="1" <?php if($this->param['ad_home']==1) {echo "CHECKED";}?>>
+						<span class="radioInput"></span>
+						<em>是</em>
+					</label>
+					<label class="label-ele J_btn_outlink" data-type="0">
+						<input class="radio" type="radio" name="ad_home" value="0" <?php if($this->param['ad_home']==0) {echo "CHECKED";} ?> >
+						<span class="radioInput"></span>
+						<em>否</em>
+					</label>
+				</div>
+			</div>
+
+
+
+			<div class="row clearfix J_view_outlink">
+				<div class="fl col-label pt-w-15">链接</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-400" name="ad_link" value="<?php echo $this->param['ad_link']; ?>"></div>
+				<div class="fl col-label pt-w-15">排序</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-400" name="sort_id" value="<?php echo $this->param['sort_id']; ?>"></div>
+
+			</div>
+
+
+			<div class="row clearfix J_view_inlink J_view_template">
+				<div class="fl col-label pt-w-15">上传图片</div>
+				<div class="fl pt-w-85"> <input name="ad_img" type="text" id="banner_img" size="50" class="input px-w-300" value="<?php echo $this->param['ad_img'];?>" /><br />
+
+					<iframe src="/manage/upload/index/?backinput=banner_img&backview=view_banner_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['ad_img']) {echo DOMAIN_IMG."/".$this->param['ad_img'];} else { echo $this->yulan_jpg; }?>" id="view_banner_img" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">描述</div>
+				<div class="fl pt-w-85"><textarea name="ad_desc" style="width:40%;height:100px;"><?php echo $this->param['ad_desc']; ?></textarea></div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">&nbsp;</div>
+				<div class="fl pt-w-85">
+					<input type="submit" class="button button-blue">
+					<input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+				</div>
+			</div>
+		</form>
+		<!-- } forms -->
+
+
+	</div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

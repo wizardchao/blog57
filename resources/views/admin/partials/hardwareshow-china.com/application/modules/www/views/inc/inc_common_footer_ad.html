@@ -1,0 +1,27 @@
+<section>
+  <div class="quicklink-image invertedback grid-wrapper">
+    <div class="gw-inner clfix">
+      <div class="holder">
+        <?php foreach($this->common_footer_ad_list as $el){ ?>
+        <a href="<?php echo $el['ad_link']; ?>" class="item lightback coporatettop primarylink simple">
+          <?php if($el['is_svg']==0){ ?>
+          <picture>
+            <source media="(min-width: 1025px)" srcset="<?php echo $el['ad_img']; ?>">
+            <source media="(min-width: 481px)" srcset="<?php echo $el['ad_img']; ?>">
+            <source srcset="<?php echo $el['ad_img']; ?>">
+            <img src="<?php echo $el['ad_img']; ?>" alt="">
+          </picture>
+          <?php }else{ ?>
+          <span class="icon-holder calchexback">
+            <img src="<?php echo $el['ad_img']; ?>" class="svg">
+          </span>
+          <?php } ?>
+
+          <p><span>
+              <?php echo $el['ad_title']; ?></span></p>
+        </a>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+</section>

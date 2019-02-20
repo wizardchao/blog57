@@ -1,0 +1,411 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+	<div class="container">
+
+		<!-- 横向菜单 { -->
+		<?php
+					 $nav['btns'] = array('<a href="/manage/banner/banner_list" class="button button-blue">返回列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+		<!-- } 横向菜单 -->
+
+		<!-- forms { -->
+		<form class="forms" method="post" action="" id="form_sub">
+			<!--<div class="forms">-->
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">轮播图按钮</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">左侧图片按钮</div>
+				<div class="fl pt-w-35">
+					<!-- <input type="text" class="input px-w-100" name="home_page_banner_title1" value="<?php echo $this->param['home_page_banner_title1'];?>"> -->
+					<input type="text" class="ml10 input px-w-250" name="home_page_banner_link1" value="<?php echo $this->param['home_page_banner_link1'];?>">
+				</div>
+				<div class="fl col-label pt-w-15">图片上传</div>
+				<div class="fl pt-w-35"><input name="home_page_banner_link1_bg" type="text" id="banner1_bg" size="50" class="input px-w-200" value="<?php echo $this->param['home_page_banner_link1_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=banner1_bg&backview=view_banner1_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['home_page_banner_link1_bg']) {echo DOMAIN_FILE.$this->param['home_page_banner_link1_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_banner1_bg" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">右侧图片按钮</div>
+				<div class="fl pt-w-35">
+					<!-- <input type="text" class="input px-w-100" name="home_page_banner_title2" value="<?php echo $this->param['home_page_banner_title2'];?>"> -->
+					<input type="text" class="ml10 input px-w-250" name="home_page_banner_link2" value="<?php echo $this->param['home_page_banner_link2'];?>">
+				</div>
+				<div class="fl col-label pt-w-15">图片上传</div>
+				<div class="fl pt-w-35"><input name="home_page_banner_link2_bg" type="text" id="banner2_bg" size="50" class="input px-w-200" value="<?php echo $this->param['home_page_banner_link2_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=banner2_bg&backview=view_banner2_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['home_page_banner_link2_bg']) {echo DOMAIN_FILE.$this->param['home_page_banner_link2_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_banner2_bg" />
+					</div>
+				</div>
+			</div>
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">行业概况</strong>
+				</div>
+			</div>
+			<div class="row clearfix content_show">
+				<div class="fl col-label pt-w-15">内容编辑</div>
+				<div class="fl pt-w-84"><textarea name="content" class='content' style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+										param['home_desc'];?></textarea></div>
+			</div>
+
+			<!-- 倒计时 { -->
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">倒计时模块</strong>
+				</div>
+			</div>
+			<div class="row clearfix content_show">
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" name="countdown_title" value="<?php echo $this->param['countdown_title']; ?>"></div>
+				<div class="fl col-label pt-w-15">前台显示</div>
+				<div class="fl pt-w-35">
+					<label class="label-ele">
+						<input class="radio" type="radio" name="countdown_show" value="1" <?php if($this->param['countdown_show']==1) {echo "CHECKED";}?>>
+						<span class="radioInput"></span>
+						<em>是</em>
+					</label>
+					<label class="label-ele">
+						<input class="radio" type="radio" name="countdown_show" value="0" <?php if($this->param['countdown_show']==0) {echo "CHECKED";} ?> >
+						<span class="radioInput"></span>
+						<em>否</em>
+					</label>
+				</div>
+
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">背景图</div>
+				<div class="fl pt-w-35"><input name="countdown_bg" type="text" id="countdown_bg" size="50" class="input px-w-200" value="<?php echo $this->param['countdown_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=countdown_bg&backview=view_countdown_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['countdown_bg']) {echo DOMAIN_FILE.$this->param['countdown_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_countdown_bg" />
+					</div>
+				</div>
+
+				<div class="fl col-label pt-w-15">开始时间</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" id="datetimepicker" name="countdown_time" value="<?php echo $this->param['countdown_time']; ?>"></div>
+
+			</div>
+			<!-- } 倒计时 -->
+
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">视频模块</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+
+				<!-- <div class="fl col-label pt-w-15">视频缩略图</div>
+				<div class="fl pt-w-35"><input name="home_page_video_img" type="text" id="news_img" size="50" class="input px-w-200" value="<?php echo $this->param['home_page_video_img'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=news_img&backview=view_news_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['home_page_video_img']) {echo DOMAIN_FILE.$this->param['home_page_video_img'];}
+                        else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+					</div>
+				</div> -->
+				<div class="fl col-label pt-w-15">视频标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-350" name="home_page_video_title" value="<?php echo $this->param['home_page_video_title']; ?>"></div>
+
+				<div class="fl col-label pt-w-15">视频地址</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-350" name="home_page_video_link" value="<?php echo $this->param['home_page_video_link']; ?>"></div>
+			</div>
+			<div class="row clearfix content_show">
+				<div class="fl col-label pt-w-15">视频描述</div>
+				<div class="fl pt-w-84"><textarea name="home_page_video_desc" class='content' style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+										param['home_page_video_desc'];?></textarea></div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">快捷链接</div>
+				<div class="fl pt-w-85">
+					<input type="text" class="input px-w-100" name="header_quick_video_title" value="<?php echo $this->param['header_quick_video_title'];?>">
+					<input type="text" class="ml10 input px-w-250" name="header_quick_video_link" value="<?php echo $this->param['header_quick_video_link'];?>">
+				</div>
+			</div>
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">不容错过</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" name="miss_title" value="<?php echo $this->param['miss_title']; ?>"></div>
+
+				<div class="fl col-label pt-w-15">底部图片</div>
+				<div class="fl pt-w-35"><input name="miss_bg" type="text" id="miss_bg" size="50" class="input px-w-200" value="<?php echo $this->param['miss_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=miss_bg&backview=view_miss_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['miss_bg']) {echo DOMAIN_FILE.$this->param['miss_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_miss_bg" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix content_show">
+				<div class="fl col-label pt-w-15">是否显示</div>
+				<div class="fl pt-w-35">
+					<label class="label-ele">
+						<input class="radio" type="radio" name="miss_show" value="1" <?php if($this->param['miss_show']==1) {echo "CHECKED";}?>>
+						<span class="radioInput"></span>
+						<em>是</em>
+					</label>
+					<label class="label-ele">
+						<input class="radio" type="radio" name="miss_show" value="0" <?php if($this->param['miss_show']==0) {echo "CHECKED";} ?> >
+						<span class="radioInput"></span>
+						<em>否</em>
+					</label>
+				</div>
+
+			</div>
+
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">历届精彩图片</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" name="pic_title" value="<?php echo $this->param['pic_title']; ?>"></div>
+
+				<div class="fl col-label pt-w-15">图片</div>
+				<div class="fl pt-w-35"><input name="pic_bg" type="text" id="pic_bg" size="50" class="input px-w-200" value="<?php echo $this->param['pic_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=pic_bg&backview=view_pic_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['pic_bg']) {echo DOMAIN_FILE.$this->param['pic_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_pic_bg" />
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">快捷链接</div>
+				<div class="fl pt-w-85">
+					<input type="text" class="input px-w-100" name="header_quick_pic_title" value="<?php echo $this->param['header_quick_pic_title'];?>">
+					<input type="text" class="ml10 input px-w-250" name="header_quick_pic_link" value="<?php echo $this->param['header_quick_pic_link'];?>">
+				</div>
+			</div>
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">活动</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" name="activity_title" value="<?php echo $this->param['activity_title']; ?>"></div>
+
+				<div class="fl col-label pt-w-15">图片</div>
+				<div class="fl pt-w-35"><input name="activity_bg" type="text" id="activity_bg" size="50" class="input px-w-200" value="<?php echo $this->param['activity_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=activity_bg&backview=view_activity_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['activity_bg']) {echo DOMAIN_FILE.$this->param['activity_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_activity_bg" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix content_show">
+				<div class="fl col-label pt-w-15">活动描述</div>
+				<div class="fl pt-w-84"><textarea name="home_page_activity_desc" class='content' style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+										param['home_page_activity_desc'];?></textarea></div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">快捷链接</div>
+				<div class="fl pt-w-85">
+					<input type="text" class="input px-w-100" name="header_quick_activity_title" value="<?php echo $this->param['header_quick_activity_title'];?>">
+					<input type="text" class="ml10 input px-w-250" name="header_quick_activity_link" value="<?php echo $this->param['header_quick_activity_link'];?>">
+				</div>
+			</div>
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">资讯</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" name="news_title" value="<?php echo $this->param['news_title']; ?>"></div>
+
+				<div class="fl col-label pt-w-15">图片</div>
+				<div class="fl pt-w-35"><input name="news_bg" type="text" id="news_bg" size="50" class="input px-w-200" value="<?php echo $this->param['news_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=news_bg&backview=view_news_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['news_bg']) {echo DOMAIN_FILE.$this->param['news_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_news_bg" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix content_show">
+				<div class="fl col-label pt-w-15">资讯描述</div>
+				<div class="fl pt-w-84"><textarea name="home_page_news_desc" class='content' style="width:100%;height:500px;visibility:hidden;"><?php echo $this->
+										param['home_page_news_desc'];?></textarea></div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">快捷链接</div>
+				<div class="fl pt-w-85">
+					<input type="text" class="input px-w-100" name="header_quick_news_title" value="<?php echo $this->param['header_quick_news_title'];?>">
+					<input type="text" class="ml10 input px-w-250" name="header_quick_news_link" value="<?php echo $this->param['header_quick_news_link'];?>">
+				</div>
+			</div>
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">展会</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">标题</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-200" name="exhibitor_title" value="<?php echo $this->param['exhibitor_title']; ?>"></div>
+
+				<div class="fl col-label pt-w-15">图片</div>
+				<div class="fl pt-w-35"><input name="exhibitor_bg" type="text" id="exhibitor_bg" size="50" class="input px-w-200" value="<?php echo $this->param['exhibitor_bg'];?>" /> <br />
+
+					<iframe src="/manage/upload/index/?backinput=exhibitor_bg&backview=view_exhibitor_bg" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe>
+					<br />
+
+					<div class="view_img">
+						<img src="<?php if($this->param['exhibitor_bg']) {echo DOMAIN_FILE.$this->param['exhibitor_bg'];}
+												else { echo $this->yulan_jpg; }?>" id="view_exhibitor_bg" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">快捷链接</div>
+				<div class="fl pt-w-85">
+					<input type="text" class="input px-w-100" name="header_quick_exhibitor_title" value="<?php echo $this->param['header_quick_exhibitor_title'];?>">
+					<input type="text" class="ml10 input px-w-250" name="header_quick_exhibitor_link" value="<?php echo $this->param['header_quick_exhibitor_link'];?>">
+				</div>
+			</div>
+
+			<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+				<div class="fl pt-w-15 tr">
+					<strong class="pr10">显示数量</strong>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">顶部导航-资料下载</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-100" name="home_data_count" value="<?php echo $this->param['home_data_count']; ?>"> /个</div>
+				<div class="fl col-label pt-w-15">顶部导航-五金展会</div>
+				<div class="fl pt-w-35"><input type="text" class="input px-w-100" name="home_activity_count" value="<?php echo $this->param['home_activity_count']; ?>"> /个</div>
+			</div>
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">底部-链接</div>
+				<div class="fl pt-w-85"><input type="text" class="input px-w-100" name="home_news_count" value="<?php echo $this->param['home_news_count']; ?>"> /个</div>
+			</div>
+
+			<div class="row clearfix">
+				<div class="fl col-label pt-w-15">&nbsp;</div>
+				<div class="fl pt-w-85">
+					<input type="submit" class="button button-blue" value=" 设置 ">
+					<input type="button" class="button button-gray" value=" 返回 " onclick="javascript:history.back(-1)">
+				</div>
+			</div>
+			<!--</div>-->
+		</form>
+		<!-- } forms -->
+
+
+	</div>
+</div>
+<!-- } right container -->
+<script src="<?php echo DOMAIN_MANAGE; ?>/datetimepicker/build/jquery.datetimepicker.full.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo DOMAIN_MANAGE; ?>/datetimepicker/jquery.datetimepicker.css" />
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+	KindEditor.ready(function(K) {
+		var editor1 = K.create('textarea[class="content"]', {
+			cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+			uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+			fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+			allowFileManager: true,
+			afterCreate: function() {
+				var self = this;
+				K.ctrl(document, 13, function() {
+					self.sync();
+					K('form[name=example]')[0].submit();
+				});
+				K.ctrl(self.edit.doc, 13, function() {
+					self.sync();
+					K('form[name=example]')[0].submit();
+				});
+			}
+		});
+		prettyPrint();
+	});
+
+
+	$.datetimepicker.setLocale('en');
+	$('#datetimepicker').datetimepicker({
+		dayOfWeekStart: 1,
+		lang: 'en',
+		disabledDates: [],
+		startDate: '2019/02/01'
+	});
+	var dateTime = '<?php echo $this->param['
+	countdown_time ']; ?>';
+	$('#datetimepicker').datetimepicker({
+		value: dateTime,
+		step: 10
+	});
+</script>
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

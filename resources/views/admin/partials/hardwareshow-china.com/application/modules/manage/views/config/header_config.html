@@ -1,0 +1,140 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+			<!-- 横向菜单 { -->
+			<?php
+				 $nav['btns'] = array('');
+					 include($this->_base_name . '/inc/cross_menu.html');
+			?>
+			<!-- } 横向菜单 -->
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <!--<div class="forms">-->
+						<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+							<div class="fl pt-w-15 tr">
+								<strong class="pr10">网站slogan</strong>
+							</div>
+						</div>
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">网站slogan</div>
+								<div class="fl pt-w-85"><input type="text" class="input px-w-300" name="slogan"
+																							 value="<?php echo $this->param['slogan']; ?>"></div>
+						</div>
+						<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+							<div class="fl pt-w-15 tr">
+								<strong class="pr10">	网站logo设置</strong>
+							</div>
+						</div>
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">logo链接</div>
+								<div class="fl pt-w-35">
+										<input type="text" class="input px-w-300" name="logo_href" value="<?php echo $this->param['logo_href'];?>" placeholder="请填写链接（如选主页请为空！）">
+								</div>
+								<div class="fl col-label pt-w-15">logo标题</div>
+								<div class="fl pt-w-35">
+											<input type="text" class="ml10 input px-w-300" name="logo_href_title" value="<?php echo $this->param['logo_href_title'];?>" placeholder="请填写标题">
+								</div>
+						</div>
+						<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+							<div class="fl pt-w-15 tr">
+								<strong class="pr10">PC-LOGO图片设置</strong>
+							</div>
+						</div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">图片</div>
+                <div class="fl pt-w-35"><input name="logo" type="text" id="news_img" size="50" class="input px-w-300"
+                                               value="<?php echo $this->param['logo'];?>"/> <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=news_img&backview=view_news_img" frameborder="0"
+                            style="width: 100%; height: 70px;" scrolling="no"></iframe>
+                    <br/>
+
+                    <div class="view_img">
+                        <img  src="<?php if($this->param['logo']) {echo DOMAIN_IMG.$this->param['logo'];}
+                        else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+                    </div>
+                </div>
+								<div class="fl col-label pt-w-15">标题</div>
+									<div class="fl pt-w-35"><input type="text" class="input px-w-300" name="logo_title"
+																								 value="<?php echo $this->param['logo_title']; ?>"></div>
+            </div>
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">替代文本</div>
+								<div class="fl pt-w-85"><input type="text" class="input px-w-300" name="logo_alt"
+																							 value="<?php echo $this->param['logo_alt']; ?>"></div>
+						</div>
+
+						<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+							<div class="fl pt-w-15 tr">
+								<strong class="pr10">Mobile-LOGO图片设置</strong>
+							</div>
+						</div>
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">图片</div>
+								<div class="fl pt-w-35"><input name="black_logo" type="text" id="black_img" size="50" class="input px-w-300"
+																							 value="<?php echo $this->param['black_logo'];?>"/> <br/>
+
+										<iframe src="/manage/upload/index/?backinput=black_img&backview=view_black_img" frameborder="0"
+														style="width: 100%; height: 70px;" scrolling="no"></iframe>
+										<br/>
+
+										<div class="view_img">
+												<img  src="<?php if($this->param['black_logo']) {echo DOMAIN_IMG.$this->param['black_logo'];}
+												else { echo $this->yulan_jpg; }?>" id="view_black_img" />
+										</div>
+								</div>
+								<div class="fl col-label pt-w-15">logo标题</div>
+									<div class="fl pt-w-35"><input type="text" class="input px-w-300" name="black_logo_title"
+																								 value="<?php echo $this->param['black_logo_title']; ?>"></div>
+						</div>
+						<div class="row clearfix">
+								<div class="fl col-label pt-w-15">替代文本</div>
+								<div class="fl pt-w-85"><input type="text" class="input px-w-300" name="black_logo_alt"
+																							 value="<?php echo $this->param['black_logo_alt']; ?>"></div>
+						</div>
+
+						<div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+							<div class="fl pt-w-15 tr">
+								<strong class="pr10">顶部快捷链接</strong>
+							</div>
+						</div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">链接信息</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-100" name="header_quick_title" value="<?php echo $this->param['header_quick_title'];?>">
+                    <input type="text" class="ml10 input px-w-250" name="header_quick_link" value="<?php echo $this->param['header_quick_link'];?>">
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" value="提交">
+                    <input type="button" class="button button-gray" value="取消" onclick="javascript:history.back(-1)">
+                </div>
+            </div>
+            <!--</div>-->
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

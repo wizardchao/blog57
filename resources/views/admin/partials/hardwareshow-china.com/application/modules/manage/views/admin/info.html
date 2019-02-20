@@ -1,0 +1,152 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- 横向菜单 { -->
+        <?php
+           $nav['btns'] = array('<a href="/manage/admin/admin_list" class="button button-blue">返回列表</a>&nbsp;&nbsp;','<a href="/manage/admin/admin_add" class="button button-blue">添加管理员</a>');
+        include($this->_base_name . '/inc/cross_menu.html');
+        ?>
+        <!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+                <div class="fl pt-w-15 tr">
+                    <strong class="pr10">基本信息</strong>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">人员名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="username"
+                                               value="<?php echo $this->param['username']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">密码</div>
+                <div class="fl pt-w-85"><input type="password" class="input px-w-200" name="password" value=""
+                                               placeholder="<?php if($this->param['id']){ ?>如不修改密码请留空<?php }else{ ?>请填写密码<?php } ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id"
+                                               value="<?php echo $this->param['sort_id']; ?>"></div>
+            </div>
+
+            <div class="mt15 lh-50 clearfix" style="background: #e4e4e4;">
+                <div class="fl pt-w-15 tr">
+                    <strong class="pr10">权限管理</strong>
+                </div>
+            </div>
+
+            <!-- table { -->
+            <!--<div class="table-container pt-w-100">-->
+            <!--<div class="table-head">-->
+
+            <div class="row clearfix">
+                <div class="fl pt-w-10 tc">
+                    &nbsp;
+                </div>
+                <div class="fl pt-w-90"><label class="label-ele J_btn_outlink"> <input id="all_ck" class="radio"
+                                                                                       type="checkbox" value="1"
+                                                                                       name="all_check" <?php if($this->
+                    param['all_check']==1){ ?>CHECKED<?php } ?>> <span class="checkbox radioInput"></span>全选</label>菜单名</div>
+            </div>
+
+            <!--</div>-->
+            <!--<div class="table-body">-->
+            <?php foreach($this->menu_list as $menu){ ?>
+            <div class="row clearfix">
+                <div class="fl pt-w-10  tc">&nbsp;</div>
+                <div class="fl pt-w-90 <?php echo $menu['class']; ?>"><label class="label-ele J_btn_outlink">
+                    <?php if($menu['controller'] && $menu['action']){ ?>
+                    <input class="radio brand_ck brand_son_ck" type="checkbox" value="<?php echo $menu['id'];?>"
+                           name="auth[]" <?php if($this->param['all_check']==1 ||
+                    in_array($menu['id'],$this->auth_list)){ ?>CHECKED<?php } ?>>
+                    <span class="checkbox radioInput"></span>
+                    <?php } ?>
+
+                    <em>&nbsp;</em>
+                </label><?php echo $menu['menu_name'];?></div>
+            </div>
+
+            <?php if($menu['line']){ ?>
+            <div class="row  clearfix">
+                <div class="fl pt-w-10  tc">&nbsp;</div>
+                <div class="fl pt-w-90 ">
+                    <?php foreach($menu['line'] as $el){ ?>
+                    <label class="label-ele J_btn_outlink" style="height: auto;">
+                        <input class="radio brand_ck brand_child_ck" type="checkbox" value="<?php echo $el['id'];?>"
+                               name="auth[]" <?php if($this->param['all_check']==1 ||
+                        in_array($el['id'],$this->auth_list)){ ?>CHECKED<?php } ?>>
+                        <span class="checkbox radioInput"></span>
+                        <em><?php echo $el['menu_name']; ?></em>
+                    </label>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php } ?>
+            <?php } ?>
+            <!--</div>-->
+            <!--</div>-->
+            <!-- } table -->
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" value="提交">
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);"
+                           value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<script src="<?php echo DOMAIN_MANAGE; ?>/js/jquery-1.8.3.min.js"></script>
+<script>
+    $('#all_ck').click(function () {
+        if (this.checked) {
+            $(".brand_ck").prop("checked", true);
+            $("#sheet_on").prop("checked", true);
+        } else {
+            $(".brand_ck").prop("checked", false);
+            $("#sheet_on").prop("checked", false);
+        }
+    });
+
+    $('.brand_son_ck').click(function () {
+         var _this=$(this);
+        var _parent=_this.parent().parent().parent().next().find('.brand_child_ck');
+         if(_this.is(':checked')){
+            _parent.each(function(){
+                $(this).prop("checked", true);
+            });
+         }else{
+             _parent.each(function(){
+                 $(this).prop("checked", false);
+             });
+         }
+    });
+
+
+
+</script>
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

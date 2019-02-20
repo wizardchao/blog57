@@ -1,0 +1,57 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+			<!-- 横向菜单 { -->
+			<?php
+				 $nav['btns'] = array('');
+					 include($this->_base_name . '/inc/cross_menu.html');
+			?>
+			<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <!--<div class="forms">-->
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">顶部代码</div>
+                <div class="fl pt-w-85"><textarea
+                        name="header_code" class="textarea px-w-500" style="height: 200px;"><?php echo $this->param['header_code'];?></textarea>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">底部代码</div>
+                <div class="fl pt-w-85"><textarea
+                        name="footer_code" class="textarea px-w-500" style="height: 200px;"><?php echo $this->param['footer_code'];?></textarea>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" value="提交">
+                    <input type="button" class="button button-gray" value="取消" onclick="javascript:history.back(-1)">
+                </div>
+            </div>
+            <!--</div>-->
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

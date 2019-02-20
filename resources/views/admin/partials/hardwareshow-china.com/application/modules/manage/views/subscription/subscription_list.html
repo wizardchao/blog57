@@ -1,0 +1,90 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- 2级菜单 { -->
+        <div class="nav-wrap">
+            <ul class="nav-lists clearfix">
+                <li><a href="/manage/set/index/" >站点设置</a></li>
+                <li><a href="/manage/ad/ad_list/" >广告位设置</a></li>
+                <li><a href="/manage/subscription/subscription_list/" class="on">邮件订阅</a></li>
+                <li><a href="/manage/set/menu_list/">菜单设置</a></li>
+            </ul>
+            <div id="navLine" class="nav-line"></div>
+        </div>
+        <!-- } 2级菜单 -->
+
+        <!-- forms { -->
+
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <div class="fl col-label px-w-60 lh-32">邮箱账号</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['subscription_email'];?>" name="subscription_email">
+            </div>
+
+            <div class="fl col-label px-w-60 lh-32">人员名称</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['subscription_name'];?>" name="subscription_name">
+            </div>
+
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue ml20">搜索</a>
+            </div>
+        </form>
+
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-20 tc">邮箱账号</div>
+                    <div class="col pt-w-20 tc">游客类型</div>
+                    <div class="col pt-w-20 tc">IP</div>
+                    <div class="col pt-w-20 tc">订阅时间</div>
+                    <div class="col pt-w-20 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->sub_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-20  tc"><?php echo $list['subscription_email'];?></div>
+                    <div class="col pt-w-20  tc"><?php echo $list['visitor_type']==1?'展商':'观众';?></div>
+                    <div class="col pt-w-20  tc"><?php echo $list['subscription_ip'];?></div>
+                    <div class="col pt-w-20  tc"><?php echo ($list['time_create'])?date("Y-m-d H:i:s",$list['time_create']):'';?></div>
+                    <div class="col pt-w-20 tc">
+                        <a href="/manage/subscription/subscription_del?id=<?php echo $list['subscription_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');" style="margin-top:5px;">删除</a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,79 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+<?php
+function cate_list($cate){
+foreach($cate as $list){ ?>
+
+<div class="row clearfix">
+    <div class="col pt-w-20  tc"><?php echo $list['category_id'];?></div>
+    <div class="col pt-w-20 tc">
+        <input type="text" class="pt-w-50  input mt5" value="<?php echo $list['sort_id'];?>" name="sort_id_<?php echo $list['category_id'];?>">
+    </div>
+    <div class="col pt-w-20  <?php echo $list['class']; ?>"><?php echo $list['category_name'];?></div>
+    <!--<div class="col pt-w-25  tc"><?php echo $list['sort_id'];?></div>-->
+    <div class="col pt-w-40 tc">
+        <a href="/manage/product/cate_edit?category_id=<?php echo $list['category_id']; ?>" class="button button-blue">编辑</a>
+        <a href="/manage/product/cate_del?category_id=<?php echo $list['category_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">删除</a>
+    </div>
+</div>
+<?php if(isset($list['son_cate'])){ ?>
+<?php cate_list($list['son_cate']);}}} ?>
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+
+
+            <div class="right-btns">
+                <a href="/manage/product/cate_add" class="button button-blue">添加产品分类</a>
+            </div>
+        </div>
+        <form class="pt10 pb10 clearfix" method="post" action="/manage/product/cate_order" id="menu_form">
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-20 tc">产品分类编号</div>
+                    <div class="col pt-w-20 tc mt6">排序值</div>
+                    <div class="col pt-w-20 tc">产品分类名称</div>
+                    <!--<div class="col pt-w-25 tc">排序</div>-->
+                    <div class="col pt-w-40 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php cate_list($this->list);?>
+            </div>
+        </div>
+        <!-- } table -->
+            <div class="row clearfix">
+                <div class="fl pt-w-85">
+                    <a href="javascript:document:menu_form.submit();" class="button button-blue">保存排序</a>
+                </div>
+            </div>
+        </form>
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

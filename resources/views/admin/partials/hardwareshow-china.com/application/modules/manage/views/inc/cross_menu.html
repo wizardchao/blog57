@@ -1,0 +1,33 @@
+<!-- 2级菜单 { -->
+<?php
+        if($this->flag==1){ ?>
+<div class="nav-wrap">
+    <ul class="nav-lists clearfix">
+        <?php foreach($this->second_menu as $key => $list){ ?>
+        <li><a href="<?php echo $list['url'];?>" <?php if(($list['id']==$this->menu_id)){ $on_key= $key; ?>class="on"<?php } ?>><?php echo $list['menu_name'];?></a></li>
+        <?php } ?>
+    </ul>
+    <div id="navLine" class="nav-line"></div>
+</div>
+<?php }
+?>
+<!-- } 2级菜单 -->
+
+<!-- 3级 { -->
+<div class="tabs-wrap" >
+    <i class="tabs-line"></i>
+    <ul class="tabs-list clearfix">
+        <?php if($this->flag==0) {foreach($this->second_menu as $list){?>
+        <li><a href="<?php echo $list['url'];?>" <?php if($list['id']==$this->menu_id ){ ?>class="on"<?php } ?>><?php echo $list['menu_name'];?></a></li>
+        <?php } }else{ foreach($this->second_menu[$on_key]['child'] as $list){ ?>
+        <li><a href="<?php echo '/'.$this->module.'/'.$list['controller'].'/'.$list['action'];?>" <?php if($list['id']==$this->cur_menu_id || $list['id']==$this->p_menu_id){ ?>class="on"<?php } ?>><?php echo $list['menu_name'];?></a></li>
+        <?php } }?>
+    </ul>
+
+    <div class="right-btns">
+        <?php foreach($nav['btns'] as $el){
+        echo $el;}
+       ?>
+    </div>
+</div>
+<!-- } 3级 -->

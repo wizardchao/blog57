@@ -1,0 +1,45 @@
+<!-- Fair countdown -->
+<?php if($this->configInfo['countdown_show']==1){ ?>
+<div data-target="<?php echo $this->configInfo['countdown_time']?date('Y/m/d H:i:s',$this->configInfo['countdown_time']):'';  ?>" class="countdown dateCountdown ctdbg" style="background-image:url(<?php echo $this->configInfo['countdown_bg']?DOMAIN_FILE.$this->configInfo['countdown_bg']:''; ?>)">
+  <h2 class="hl_2"><?php echo $this->configInfo['countdown_title']; ?></h2>
+  <div class="item-holder">
+    <div class="item">
+      <div class="inner">
+        <div class="maincount dayCountdown">07</div>
+        天
+      </div>
+    </div>
+    <div class="item">
+      <div class="dot">:</div>
+    </div>
+    <div class="item">
+      <div class="inner">
+        <div class="maincount hourCountdown">21</div>
+        <span class="pad">时</span>
+        <span class="mobile">时</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="dot">:</div>
+    </div>
+    <div class="item">
+      <div class="inner">
+        <div class="maincount minuteCountdown">22</div>
+        <span class="pad">分</span>
+        <span class="mobile">分</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="dot">:</div>
+    </div>
+    <div class="item">
+      <div class="inner">
+        <div class="maincount secondCountdown">08</div>
+        <span class="pad">秒</span>
+        <span class="mobile">秒</span>
+      </div>
+    </div>
+  </div>
+  <!-- <a href="javascript:void(0)" class="btn secondary large">加入日程</a> -->
+</div>
+<?php } ?>

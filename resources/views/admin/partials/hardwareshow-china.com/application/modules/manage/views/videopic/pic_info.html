@@ -1,0 +1,123 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/videopic/pic_list" class="button button-blue">返回列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="vp_title"
+                                               value="<?php echo $this->param['vp_title']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">上传类型</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele J_btn_outlink" data-type="1">
+                        <input class="radio" type="radio" name="type" value="1" <?php if($this->param['type']==1 || $this->param['type'] == '') {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>图片</em>
+                    </label>
+                    <!-- <label class="label-ele J_btn_outlink" data-type="2">
+                        <input class="radio" type="radio" name="type" value="2" <?php if($this->param['type']==2) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>视频</em>
+                    </label> -->
+                </div>
+            </div>
+
+            <!-- <div class="row clearfix video">
+                <div class="fl col-label pt-w-15">视频地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="vp_link"
+                                               value="<?php echo $this->param['vp_link']; ?>"></div>
+            </div> -->
+
+
+            <div class="row clearfix pic">
+                <div class="fl col-label pt-w-15">上传图片</div>
+                <div class="fl pt-w-85"><input name="pic" type="text" size="50" id="vp_img" class="input px-w-300"
+                                               value="<?php echo $this->param['vp_img'];?>"/> <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=vp_img&backview=view_vp_img" frameborder="0"
+                            style="width: 100%; height: 70px;" scrolling="no"></iframe>
+                    <br/>
+
+                    <div class="view_img">
+                        <img src="<?php if($this->param['vp_img']) {echo DOMAIN_IMG."/".$this->param['vp_img'];}
+                        else { echo $this->yulan_jpg; }?>" id="view_vp_img" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id"
+                                               value="<?php echo $this->param['sort_id']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue">
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);"
+                           value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<script>
+    $(function(){
+        if($('input[name="type"]:checked').val()==1){
+            $('.video').hide();
+            $('.pic').show();
+        }else{
+            $('.video').show();
+            $('.pic').hide();
+        }
+        $('input[name="type"]').click(function () {
+                var url_mode =$('input[name="type"]:checked').val();
+                if(url_mode==1){
+                    $('.video').hide();
+                    $('.pic').show();
+                }
+                if(url_mode==2){
+                    $('.video').show();
+                    $('.pic').hide();
+                }
+                //alert(url_mode);
+            }
+
+        );
+
+
+    });
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

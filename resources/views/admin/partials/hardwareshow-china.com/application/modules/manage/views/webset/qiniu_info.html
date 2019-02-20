@@ -1,0 +1,50 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <?php
+	        include($this->_base_name . '/webset/common.html');
+        ?>
+
+        <form class="forms" method="post" action="/manage/webset/system" id="form_sub">
+            <input type="hidden" class="input px-w-500" name="set_info" value="qiniu" >
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">accessKey配置</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="accessKey" value="<?php echo $this->param['accessKey'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">secretKey配置</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="secretKey" value="<?php echo $this->param['secretKey'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">七牛域名配置</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="domain"  value="<?php echo $this->param['domain'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">存储空间选择</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="bucket" value="<?php echo $this->param['bucket'];?>"></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <a href="javascript:document:form_sub.submit();" class="button button-blue">保存信息</a>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

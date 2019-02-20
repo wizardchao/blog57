@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1.0, maximum-scale=1.0" / <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    <?php echo $this->configInfo['home_title'];?>
+  </title>
+  <meta name="description" content="<?php echo $this->configInfo['home_description'];?>">
+  <meta name="keywords" content="<?php echo $this->configInfo['home_keywords'];?>">
+  <!-- start css-scripts -->
+  <link rel="stylesheet" href="<?php echo DOMAIN_STATIC; ?>/css/homebanner.css">
+  <link rel="stylesheet" href="<?php echo DOMAIN_STATIC; ?>/css/page.css">
+  <link rel="stylesheet" href="<?php echo DOMAIN_STATIC; ?>/css/styles.css">
+  <!-- end css-scripts -->
+
+  <!-- Include Scripts -->
+  <script src="<?php echo DOMAIN_STATIC; ?>/js/lib/jquery-2.1.0.js" type="text/javascript"></script>
+  <script src="<?php echo DOMAIN_STATIC; ?>/js/lib/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="<?php echo DOMAIN_STATIC; ?>/js/main.min.js" type="text/javascript"></script>
+  <!-- <script src="<?php echo DOMAIN_STATIC; ?>/js/hompage.js" type="text/javascript"></script> -->
+
+</head>
+
+<body>
+  <!-- header-->
+  <?php include($this->_base_name . '/inc/inc_header.html'); ?>
+  <!-- //header-->
+
+  <!-- Content main-->
+  <div class="main">
+
+
+    <section class="banner">
+      <div class="m-slider">
+        <div id="slider">
+            <ul id="m-slider" class="cnt">
+          <?php foreach($this->banner_list as $key => $el){ ?>
+            <li>
+              <a href="<?php echo $el['banner_link']; ?>" target="_blank">
+                <img class="banner-pc" src="<?php echo $el['banner_img']?DOMAIN_FILE.$el['banner_img']:''; ?>" alt="">
+                <img class="banner-m" src="<?php echo $el['banner_m_img']?DOMAIN_FILE.$el['banner_m_img']:''; ?>" alt="">
+              <?php if($key==0){ ?>  <span><img src="<?php echo DOMAIN_STATIC; ?>/img/image/btn1.png" alt=""></span><?php } ?>
+              </a>
+            </li>
+          <?php } ?>
+          </ul>
+
+          <ul class="buttons">
+            <li>
+              <a href="<?php echo $this->configInfo['home_page_banner_link1']; ?>" target="_blank">
+                <img src="<?php echo $this->configInfo['home_page_banner_link1_bg']?DOMAIN_FILE.$this->configInfo['home_page_banner_link1_bg']:''; ?>" alt="<?php echo $this->configInfo['home_page_banner_title1']; ?>" >
+              </a>
+            </li>
+            <li>
+              <a href="<?php echo $this->configInfo['home_page_banner_link2']; ?>" target="_blank">
+                <img src="<?php echo $this->configInfo['home_page_banner_link2_bg']?DOMAIN_FILE.$this->configInfo['home_page_banner_link2_bg']:''; ?>" alt="<?php echo $this->configInfo['home_page_banner_title2']; ?>" >
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- Introduction -->
+    <?php echo $this->configInfo['home_desc']; ?>
+
+    <!-- Home adv -->
+    <?php if(COUNT($this->ad_list)){ ?>
+    <section>
+      <div class="">
+        <div class="grid-wrapper">
+          <div class="gw-inner">
+            <div class="teaser-row" style="padding-bottom:0px!important;">
+
+              <?php foreach($this->ad_list as $rs){ ?>
+                <div class="teaser col1 t01">
+                  <div class="t-inner lightback">
+                    <a href="<?php echo $rs['ad_link'];?>" title="<?php echo $rs['ad_title'];?>" class="noline">
+                      <picture><img src="<?php echo $rs['ad_img'];?>" alt=""></picture>
+                    </a>
+
+                  </div>
+                </div>
+              <?php } ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<?php } ?>
+
+
+
+    <!-- Teaser -->
+    <section>
+      <div class="teaser-holder invertedback">
+        <div class="grid-wrapper">
+          <div class="gw-inner">
+            <div class="teaser-row">
+              <!-- video-->
+              <div class="teaser  col1 corptop t01">
+                <div class="t-inner lightback">
+                  <div class="embed-container">
+                    <iframe height=560 width=510 src='<?php echo $this->configInfo['home_page_video_link'];?>' frameborder=0 'allowfullscreen'></iframe>
+                  </div>
+                  <div class="copy">
+                    <h2 class="hl_3"><?php echo $this->configInfo['home_page_video_title']; ?></h2>
+                    <p><?php echo htmlspecialchars_decode($this->configInfo['home_page_video_desc']); ?></p>
+                    <a href="<?php echo $this->configInfo['header_quick_video_link']; ?>" title="<?php echo $this->configInfo['header_quick_video_title']; ?>" class="primarylink"><span><?php echo $this->configInfo['header_quick_video_title']; ?></span></a>
+                  </div>
+                </div>
+              </div><!-- //video-->
+
+              <!-- links -->
+              <div class="teaser  col1 corptop t03">
+                <div class="t-inner lightback" >
+                  <h2 class="hl_3"><?php echo $this->configInfo['miss_title']; ?></h2>
+                  <ul class="arrowlist clfix" style="padding-top:15px;">
+                    <?php foreach($this->home_link_list as $el){ ?>
+                    <li><a href="<?php echo $el['link_url']; ?>" title="<?php echo $el['link_title']; ?>" class="initial_noline"><?php echo $el['link_title']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                  <?php if($this->configInfo['miss_show']==1){ ?>
+                  <div style="position: absolute;z-index: 999999; left:0px; bottom:-8px;">
+                  <img src="<?php echo $this->configInfo['miss_bg']; ?>" alt="" width="100%" height="220">
+                  </div>
+                  <?php } ?>
+                </div>
+
+              </div>
+              <!-- //links-->
+
+              <!-- 2018 selected pictures -->
+              <div class="teaser  col1 corptop t05">
+                <div class="t-inner gradient_overlay left">
+                  <div class="bg_container_t bg_desktop" style="background-image:url(<?php echo $this->configInfo['pic_bg']; ?>)"></div>
+                  <div class="bg_container_t bg_pad" style="background-image:url(<?php echo $this->configInfo['pic_bg']; ?>)"></div>
+                  <div class="bg_container_t bg_mobile" style="background-image:url(<?php echo $this->configInfo['pic_bg']; ?>)"></div>
+                  <div class="copy">
+                    <h2 class="hl_2"><?php echo $this->configInfo['pic_title']; ?></h2>
+                    <a href="j<?php echo $this->configInfo['header_quick_video_link']; ?>" title="查看更多" class="btn primary large lightback"><?php echo $this->configInfo['header_quick_video_title']; ?></a>
+                  </div>
+                </div>
+              </div><!-- //2018 selected pictures-->
+
+              <!-- programmes -->
+              <div class="teaser  col1 corptop t01">
+                <div class="t-inner lightback">
+                  <a href="javascript:void(0)" title="Duis autem vel eum" class="noline">
+                    <picture>
+                      <source media="(min-width: 1025px)" srcset="<?php echo $this->configInfo['activity_bg']; ?>">
+                      <source media="(min-width: 720px)" srcset="<?php echo $this->configInfo['activity_bg']; ?>">
+                      <source srcset="<?php echo $this->configInfo['activity_bg']; ?>">
+                      <img src="<?php echo $this->configInfo['activity_bg']; ?>" alt="">
+                    </picture>
+                  </a>
+                  <div class="copy">
+                    <h2 class="hl_3"><?php echo $this->configInfo['activity_title']; ?></h2>
+                    <p><?php echo $this->configInfo['home_page_activity_desc']; ?></p>
+                    <a href="<?php echo $this->configInfo['header_quick_activity_link']; ?>" title="<?php echo $this->configInfo['header_quick_activity_title']; ?>" class="primarylink"><span><?php echo $this->configInfo['header_quick_activity_title']; ?></span></a>
+                  </div>
+                </div>
+              </div>
+              <!-- //programmes-->
+
+              <!-- news -->
+              <div class="teaser  col1 corptop t01">
+                <div class="t-inner lightback">
+                  <a href="javascript:void(0)" title="Duis autem vel eum" class="noline">
+                    <picture>
+                      <source media="(min-width: 1025px)" srcset="<?php echo $this->configInfo['news_bg']; ?>">
+                      <source media="(min-width: 720px)" srcset="<?php echo $this->configInfo['news_bg']; ?>">
+                      <source srcset="<?php echo $this->configInfo['news_bg']; ?>">
+                      <img src="<?php echo $this->configInfo['news_bg']; ?>" alt="">
+                    </picture>
+                  </a>
+                  <div class="copy">
+                    <h2 class="hl_3"><?php echo $this->configInfo['news_title']; ?></h2>
+                    <p><?php echo $this->configInfo['home_page_news_desc']; ?>
+                    </p>
+                    <a href="<?php echo $this->configInfo['header_quick_news_link']; ?>" title="<?php echo $this->configInfo['header_quick_news_title']; ?>" class="primarylink"><span><?php echo $this->configInfo['header_quick_news_title']; ?></span></a>
+                  </div>
+                </div>
+              </div>
+              <!-- //news-->
+
+              <!-- KOELNMESSE -->
+              <div class="teaser  col1 corptop t05">
+                <div class="t-inner gradient_overlay left">
+                  <div class="bg_container_t bg_desktop" style="background-image:url(<?php echo $this->configInfo['exhibitor_bg']; ?>)"></div>
+                  <div class="bg_container_t bg_pad" style="background-image:url(<?php echo $this->configInfo['exhibitor_bg']; ?>)"></div>
+                  <div class="bg_container_t bg_mobile" style="background-image:url(<?php echo $this->configInfo['exhibitor_bg']; ?>)"></div>
+                  <div class="copy">
+                    <h2 class="hl_2"><?php echo $this->configInfo['exhibitor_title']; ?></h2>
+                    <a href="<?php echo $this->configInfo['header_quick_exhibitor_link']; ?>" title="<?php echo $this->configInfo['header_quick_exhibitor_title']; ?>" class="btn primary large lightback"><?php echo $this->configInfo['header_quick_exhibitor_title']; ?></a>
+                  </div>
+                </div>
+              </div>
+              <!-- //KOELNMESSE-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- 推荐展商-->
+    <section>
+      <div class="exhibitor lightback grid-wrapper" style="padding-top:40px;">
+        <div class="gw-inner">
+          <h2 class="hl_2">推荐展商</h2>
+          <div class="slides_exhibitor clfix">
+          <?php foreach($this->vistor_list as $el){ ?>
+            <div class="item">
+              <a href="<?php echo $el['visitor_link']; ?>">
+                <div class="inner"><img src="<?php echo visitor_img; ?>" alt="<?php echo $el['visitor_title']; ?>" title="<?php echo $el['visitor_title']; ?>"></div>
+              </a>
+            <?php if($el['visitor_title']){ ?><span><?php echo $el['visitor_title']; ?></span><?php } ?>
+            </div>
+          <?php }?>
+
+          </div>
+          <div class="slide_footer clfix">
+            <div class="controlholder">
+              <div class="controlinner">
+                <div class="pagingInfo"></div>
+              </div>
+            </div>
+            <a href="/" title="查看更多" class="primarylink"><span>查看更多</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- //推荐展商-->
+
+    <!-- 合作媒体-->
+    <section>
+      <div class="exhibitor lightback grid-wrapper invertedback" style="padding-top:40px;">
+        <div class="gw-inner">
+          <h2 class="hl_2">合作媒体</h2>
+          <div class="slides_exhibitor clfix">
+          <?php foreach($this->brochure_list as $el){ ?>
+            <div class="item">
+              <a href="<?php echo $el['link']; ?>">
+                <div class="inner"><img src="<?php echo $el['brochure_img']?DOMAIN_FILE.$el['brochure_img']:''; ?>" alt="<?php echo $el['brochure_title']; ?>" title="<?php echo $el['brochure_title']; ?>"></div>
+              </a>
+            </div>
+            <!-- <div class="item">
+              <a href="javascript:void(0)">
+                <div class="inner">
+                  <p>Lorem Ipsum</p>
+                </div>
+              </a>
+              <span>Caption</span>
+            </div> -->
+<?php } ?>
+
+          </div>
+          <div class="slide_footer clfix">
+            <div class="controlholder">
+              <div class="controlinner">
+                <div class="pagingInfo"></div>
+              </div>
+            </div>
+            <a href="javascript:void(0)" title="查看更多" class="primarylink"><span>查看更多</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- //合作媒体-->
+
+
+    <!-- 倒计时-->
+    <?php 	include($this->_base_name . '/inc/inc_countdown.html'); ?>
+    <!-- 倒计时-->
+  </div>
+
+  <!-- footer-->
+  <?php 	include($this->_base_name . '/inc/inc_footer.html'); ?>
+  <!-- //footer-->
+
+</body>
+
+</html>

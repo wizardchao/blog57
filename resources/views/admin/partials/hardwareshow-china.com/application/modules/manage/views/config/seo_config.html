@@ -1,0 +1,77 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+			<!-- 横向菜单 { -->
+			<?php
+				 $nav['btns'] = array('');
+					 include($this->_base_name . '/inc/cross_menu.html');
+			?>
+			<!-- } 横向菜单 -->
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <!--<div class="forms">-->
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">首页标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-600" name="home_title"
+                                               value="<?php echo $this->param['home_title']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">首页关键字</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-600" name="home_keywords"
+                                               value="<?php echo $this->param['home_keywords']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">首页描述</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-600" name="home_description"
+                                               value="<?php echo $this->param['home_description']; ?>"></div>
+            </div>
+
+            <div class="mt20 row clearfix">
+                <div class="fl col-label pt-w-15">通用标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-600" name="common_title"
+                                               value="<?php echo $this->param['common_title']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">通用关键字</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-600" name="common_keywords"
+                                               value="<?php echo $this->param['common_keywords']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">通用描述</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-600" name="common_description"
+                                               value="<?php echo $this->param['common_description']; ?>"></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" value="提交">
+                    <input type="button" class="button button-gray" value="取消" onclick="javascript:history.back(-1)">
+                </div>
+            </div>
+            <!--</div>-->
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

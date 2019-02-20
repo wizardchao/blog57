@@ -1,0 +1,368 @@
+<header>
+  <div class="grid-wrapper lightback ">
+    <p class="header-banner">
+      <span class="item">
+        <span class="label">
+          <?php echo $this->configInfo['slogan']; ?></span>
+        <span class="date"></span>
+      </span>
+
+    </p>
+    <div class="gw-inner">
+      <div class="logo">
+
+        <a href="<?php echo $this->configInfo['logo_href']?:'/'; ?>" title="<?php echo $this->configInfo['logo_href_title']?:'/'; ?>">
+          <div class="imgholder">
+            <img src="<?php echo $this->configInfo['logo']; ?>" alt="<?php echo $this->configInfo['logo_alt']; ?>" title="<?php echo $this->configInfo['logo_title']; ?>" class="logo-white">
+            <img src="<?php echo $this->configInfo['black_logo']; ?>" alt="<?php echo $this->configInfo['black_logo_alt']; ?>" title="<?php echo $this->configInfo['black_logo_title']; ?>" class="logo-dark">
+          </div>
+
+        </a>
+
+      </div>
+      <div class="metanav">
+        <a href="javascript:void(0)" title="Language" class="ico lang mainlink"><span>EN</span></a>
+
+        <div class="loggedin-holder">
+          <a href="javascript:void(0)" title="Login" class="ico login mainlink">
+            <span>微信</span>
+          </a>
+          <div id="tooltip_loggedin" class="tooltipster-base tooltipster-sidetip tooltipster-fade tooltipster-show tooltipster-bottom" style="z-index: 9999999; width:180px;important;text-align:center;font-size:14px;line-height:20px;">
+            <div class="tooltipster-box">
+              <img src="<?php echo DOMAIN_STATIC; ?>/img/image/2016022618044842802.jpg" alt="" style="padding:15px 4px 0px 2px;">
+              <div style="padding:0px 4px 10px 2px;">扫一扫，关注官方微信</div>
+            </div>
+            <div class="tooltipster-arrow">
+              <div class="tooltipster-arrow-uncropped">
+                <div class="tooltipster-arrow-border"></div>
+                <div class="tooltipster-arrow-background"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="javascript:void(0)" title="搜索" class="ico search mainlink"><span>搜索</span></a>
+        <a href="/about/id/1093.html" title="联系我们" class="ico contact mainlink" ><span>联系我们</span></a>
+      </div>
+      <nav>
+        <div class="holder">
+          <div class="nav-holder">
+            <div class="nav">
+              <ul class="mainmenu">
+                <li class="desktophidden calchexback corporateback">中国国际五金展</li>
+                <?php foreach($this->navInfo['firstNavInfo'] as $el){ ?>
+                <li class="hassub"><a tabindex="1" href="javascript:void(0)" title="<?php echo $el['about_title']; ?>" class="level-1 " data-target="<?php echo $el['subnav']; ?>">
+                    <?php echo $el['about_title']; ?></a></li>
+                <?php   } ?>
+                <!-- <li class="hassub"><a href="javascript:void(0)" title="Die Messe" class="level-1 " data-target="subnav-messe">展会概况</a></li>
+                    <li class="hassub"><a  href="javascript:void(0)" title="Aussteller und Produkte" class="level-1 " data-target="subnav-aussteller">展商与产品</a></li>
+                    <li class="hassub"><a  href="javascript:void(0)" title="Events" class="level-1 " data-target="subnav-events">同期活动</a></li>
+                    <li class="hassub"><a href="javascript:void(0)" title="Teilnahme und Planung" class="level-1 " data-target="subnav-teilnahme">参与计划</a></li>
+                    <li class="hassub"><a href="javascript:void(0)" title="News" class="level-1 " data-target="subnav-news">新闻中心</a></li> -->
+              </ul>
+              <div class="desktophidden mobilmeta">
+                <div align="center" style="padding:10px 10px 20px 10px; height:200px;"><img src="<?php echo DOMAIN_STATIC; ?>/img/image/2016022618044842802.jpg" alt=""><br>扫一扫，关注官方微信</div>
+                <form action="">
+                  <select name="lang" id="lang">
+                    <option value="Chinese">中文</option>
+                    <option value="English">English</option>
+                  </select>
+                </form>
+              </div>
+            </div>
+            <!-- Subnav 关于展会 -->
+            <div class="subnav " id="subnav-messe">
+              <div class="subnav-wrapper">
+                <ul>
+                  <li class="goback desktophidden calchexback corporateback first"><span>主菜单</span></li>
+                  <!-- 移动端标题 -->
+
+                  <li class="level-2 hassub">
+
+                    <a href="/about/id/<?php echo $this->navInfo['list']['subnav-messe'][0]['about_id'];?>.html" title="<?php echo $this->navInfo['list']['subnav-messe'][0]['about_title'];?>" tabindex="3">
+                      <?php echo $this->navInfo['list']['subnav-messe'][0]['about_title'];?></a>
+                    <div class="subnav-container">
+                      <ul>
+                        <li class="goback desktophidden calchexback corporateback"><span>关于展会</span></li>
+                        <!-- 移动端标题 -->
+                        <?php foreach($this->navInfo['list']['subnav-messe'][0]['child'] as $list){ ?>
+
+                        <li><a tabindex="1" href="<?php echo $list['href']; ?>" title="<?php echo $list['about_title']; ?>">
+                            <?php echo $list['about_title']; ?></a></li>
+                        <?php } ?>
+
+
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="level-2 hassub">
+                    <a href="javascript:void(0)" title="Themen 2017" tabindex="12">下载中心</a>
+                    <div class="subnav-container">
+                      <ul>
+                        <li class="goback desktophidden calchexback corporateback"><span>下载中心</span></li>
+                        <?php foreach($this->data_list as $key =>  $el){ ?>
+                        <li><a tabindex="<?php echo ++$key; ?>" href="<?php echo DOMAIN_FILE.$el['data_link']; ?>" title="<?php echo $el['data_title']; ?>" target="_blank">
+                            <?php echo $el['data_title']; ?></a></li>
+                        <?php } ?>
+
+                        <!-- 移动端标题 -->
+
+
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="level-2 hassub">
+                    <a href="/about?id=1092" title="Rückblick 2016" tabindex="16">科隆全球五金展会</a>
+                    <div class="subnav-container">
+                      <ul>
+                        <li class="goback desktophidden calchexback corporateback"><span>科隆全球五金展会</span></li>
+                        <!-- 移动端标题 -->
+                        <?php foreach($this->global_list as $el){ ?>
+                        <li><a tabindex="12" href="<?php echo $el['globalfood_link']; ?>" title="<?php echo $el['globalfood_title']; ?>" target="_blank">
+                            <?php echo $el['globalfood_title']; ?></a></li>
+                        <?php }?>
+                      </ul>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="close"></div>
+            </div>
+
+
+            <!-- Subnav 展商与产品 -->
+            <div class="subnav " id="subnav-aussteller">
+              <div class="subnav-wrapper">
+                <ul>
+                  <li class="goback desktophidden calchexback corporateback first"><span>主菜单</span></li>
+                  <!-- 移动端标题 -->
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/exhibitor/index.html" title="展商列表" tabindex="17">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-exhibitor-search__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">展商列表</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/exhibitor/product_list.html" title="产品列表" tabindex="18">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-exhibitor-register__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">产品列表</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/exhibitor/desc/about_id/1048.html" title="展位图" tabindex="19">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-hall-plan__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">展位图</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/exhibitor/desc?about_id=1050" title="Matchmaking 365" tabindex="20">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-matchmaking__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">商务对接</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                  <!-- <?php foreach($this->navInfo['list']['subnav-aussteller'] as $key => $list){ ?>
+              <li class="level-2 navmodul" style="text-align:center">
+                  <a href="/about?id=<?php echo $list['about_id']; ?>" title="<?php echo $list['about_id']; ?>" tabindex="17">
+                      <div class="navitem_icon">
+                          <img src="<?PHP echo DOMAIN_STATIC.$this->img['productImg'][$key]; ?>" class="svg">
+                          <br>
+                          <div class="linktitle ani"><?php echo $list['about_title']; ?></div>
+                          <p></p>
+
+                      </div>
+                  </a>
+              </li>
+            <?php } ?> -->
+                </ul>
+              </div>
+              <div class="close"></div>
+            </div>
+
+
+            <!-- Subnav 同期活动 -->
+            <div class="subnav " id="subnav-events">
+              <div class="subnav-wrapper">
+                <ul>
+                  <li class="goback desktophidden calchexback corporateback first"><span>主菜单</span></li>
+                  <!-- 移动端标题 -->
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/event/index.html" title="行业交流会" tabindex="17">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-counterpart__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">行业交流会</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/event/index.html?activity_category_id=1002" title="商务对接" tabindex="18">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-matchmaking__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">商务对接</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a href="/event/index.html?activity_category_id=1003" title="主题展区" tabindex="19">
+                      <div class="navitem_icon">
+                        <img src="<?php echo DOMAIN_STATIC; ?>/img/icons/icon-koelnmesse__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">主题展区</div>
+                        <p></p>
+
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="close"></div>
+            </div>
+
+            <!-- Subnav 参与计划 -->
+            <div class="subnav " id="subnav-teilnahme">
+              <div class="subnav-wrapper">
+
+                <ul>
+                  <li class="goback desktophidden calchexback corporateback first"><span>主菜单</span></li>
+                  <!-- 移动端标题 -->
+                  <?php foreach($this->navInfo['list']['subnav-teilnahme'] as $list){ ?>
+                  <li class="level-2 hassub">
+                    <a tabindex="46" href="/about/id/<?php echo $list['about_id']; ?>.html" title="Für Austeller">
+                      <?php echo $list['about_title']; ?></a>
+                    <div class="subnav-container">
+                      <ul>
+                        <li class="goback desktophidden calchexback corporateback"><span>
+                            <?php echo $list['about_title']; ?></span></li>
+
+                        <!-- Übersichtsseite das Linktext in mobile nicht klickbar -->
+                        <li><a tabindex="47" href="javascript:void(0)" title="<?php echo $list['about_title']; ?>" class="desktophidden">
+                            <?php echo $list['about_title']; ?></a></li>
+                        <?php foreach($list['child'] as $key => $el){ ?>
+                        <li><a tabindex="47" href="<?php echo $el['href']; ?>" title="<?php echo $el['about_title']; ?>">
+                            <?php echo $el['about_title']; ?></a></li>
+                        <?php } ?>
+
+
+                      </ul>
+                    </div>
+                  </li>
+                  <?php } ?>
+
+
+                </ul>
+              </div>
+              <div class="close"></div>
+            </div>
+
+            <!-- Subnav 新闻中心 -->
+            <div class="subnav " id="subnav-news">
+              <div class="subnav-wrapper">
+                <ul>
+                  <li class="goback desktophidden calchexback corporateback first"><span>主菜单</span></li>
+                  <!-- 移动端标题 -->
+
+                  <li class="level-2 hassub">
+                    <a tabindex="92" href="javascript:void(0)" title="Content für Medienvertreter" class="desktophidden">新闻中心</a>
+                    <div class="subnav-container">
+                      <ul>
+                        <li class="goback desktophidden calchexback corporateback"><span>新闻中心</span></li>
+                        <!-- Übersichtsseite das Linktext in mobile nicht klickbar -->
+
+                        <?php foreach($this->c_news_list as $el){ ?>
+                        <li><a tabindex="94" href="/news?category_id=<?php echo $el['category_id']; ?>" title="<?php echo $el['category_name']; ?>"><?php echo $el['category_name']; ?></a></li>
+                        <?php } ?>
+
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a tabindex="89" href="/news/multimedia_gallery.html" title="Aktuelles">
+                      <div class="navitem_icon">
+                        <img src="<?PHP echo DOMAIN_STATIC; ?>/img/icons/icon-people__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">展会掠影</div>
+                        <p></p>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="level-2 navmodul" style="text-align:center">
+                    <a tabindex="90" href="/news/media_partners.html" title="Social Media Wall">
+                      <div class="navitem_icon">
+                        <img src="<?PHP echo DOMAIN_STATIC; ?>/img/icons/icon-media__H60.svg" class="svg">
+                        <br>
+                        <div class="linktitle ani">合作媒体</div>
+                        <p></p>
+                      </div>
+                    </a>
+                  </li>
+
+
+
+                </ul>
+              </div>
+              <div class="close"></div>
+            </div>
+
+
+            <!-- Subnav 搜索框 -->
+            <div class="subnav" id="subnav-search">
+              <div class="subnav-wrapper">
+                <ul>
+                  <li class="goback desktophidden calchexback corporateback first"><span>搜索</span></li>
+                  <li class="flex mobilefull">
+                    <form class="search-inner" method="post" action="<?php echo 'http:'.DOMAIN_WWW; ?>/exhibitor">
+                      <input type="text" name="name" id="search" class="textfield ico ico_search" placeholder="输入关键字">
+                      <input type="submit" class="btn primary medium full calchexback" value="搜索">
+                    </form>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="close"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </nav>
+      <div class="hash"><a href="<?php echo $this->configInfo['header_quick_link'];?>" target="_blank">
+          <?php echo $this->configInfo['header_quick_title'];?></a></div>
+      <div class="menutoggle desktophidden">
+        <div id="menuicon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <label>菜单</label>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="shadow"></div>

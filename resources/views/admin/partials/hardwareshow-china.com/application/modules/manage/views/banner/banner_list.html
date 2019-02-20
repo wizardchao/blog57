@@ -1,0 +1,68 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/banner/banner_add" class="button button-blue">添加</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-10 tc">标题</div>
+                    <div class="col pt-w-10 tc">分类</div>
+                    <div class="col pt-w-20 tc">图片</div>
+                    <div class="col pt-w-20 tc">链接</div>
+                    <div class="col pt-w-20 tc">排序</div>
+                    <div class="col pt-w-20 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->banner_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-10  tc"><?php echo $list['banner_title'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo ($list['banner_type']==2)?'活动轮播':'首页轮播';?></div>
+                    <div class="col pt-w-20  tc"><?php if($list['banner_img']) { ?><a href="<?php echo $list['banner_img'];?>" target="_blank"><img src="<?php echo $list['banner_img'];?>" style="height:40px;"></a> <?php } ?></div>
+                    <div class="col pt-w-20  tc"><?php echo $list['banner_link'];?></div>
+                    <div class="col pt-w-20  tc"><?php echo $list['sort_id'];?></div>
+                    <div class="col pt-w-20 tc">
+                        <a href="/manage/banner/banner_edit?banner_id=<?php echo $list['banner_id']; ?>" class="button button-blue">编辑</a>
+                        <a href="/manage/banner/banner_del?banner_id=<?php echo $list['banner_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">删除</a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

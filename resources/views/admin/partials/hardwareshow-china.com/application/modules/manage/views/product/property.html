@@ -1,0 +1,68 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+
+
+            <div class="right-btns">
+                <a href="/manage/product/property_add" class="button button-blue">添加产品属性</a>
+            </div>
+            <div class="left-btns">
+                <a href="/manage/product/pro_list" class="button button-blue">返回产品列表</a>
+            </div>
+        </div>
+
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-20 tc">属性id</div>
+                    <div class="col pt-w-40 tc">属性详情</div>
+                    <div class="col pt-w-40 tc">属性管理</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->property_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-20  tc"><?php echo $list['property_id'];?></div>
+                    <div class="col pt-w-40  tc"><?php echo $list['detail'];?></div>
+                    <div class="col pt-w-40 tc">
+                        <a href="/manage/product/property_edit?property_id=<?php echo $list['property_id']; ?>" class="button button-blue">编辑属性</a>
+                        <a href="/manage/product/property_del?property_id=<?php echo $list['property_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">移除属性</a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

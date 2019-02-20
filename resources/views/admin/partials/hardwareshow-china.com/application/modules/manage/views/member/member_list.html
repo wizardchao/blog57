@@ -1,0 +1,105 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap"  style="height:40px";>
+            <i class="tabs-line"  ></i>
+            <!--<?php-->
+	               <!--include($this->_base_name . '/inc/tab.html');-->
+            <!--?>-->
+
+            <div class="right-btns">
+            <a href="/manage/member/member_add" class="button button-blue">添加会员</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <!--<div class="fl col-label px-w-60 lh-32">会员编号</div>-->
+            <!--<div class="fl px-w-200">-->
+            <!--<input type="text" class="fl input px-w-150" value="<?php echo $this->param['member_id'];?>" name="member_id">-->
+            <!--</div>-->
+
+            <div class="fl col-label px-w-60 lh-32">会员名称</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['member_name'];?>"
+                       name="member_name">
+            </div>
+
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue">搜索</a>
+            </div>
+        </form>
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-10 tc">会员头像</div>
+                    <div class="col pt-w-10 tc">微信昵称</div>
+                    <div class="col pt-w-10 tc">会员名称</div>
+                    <div class="col pt-w-10 tc">会员性别</div>
+                    <div class="col pt-w-10 tc">手机号码</div>
+                    <div class="col pt-w-10 tc">邮箱地址</div>
+                    <div class="col pt-w-10 tc">注册设备</div>
+                    <div class="col pt-w-10 tc">注册IP</div>
+                    <div class="col pt-w-10 tc">注册时间</div>
+                    <div class="col pt-w-10 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->member_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-10  tc"><?php if($list['avatar']) { ?><a href="<?php echo $list['avatar'];?>"
+                                                                              target="_blank"><img
+                            src="<?php echo $list['avatar'];?>" style="width:40px;height:40px;"></a> <?php } ?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['wechat_nickname'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['member_name'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['member_gender'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['member_mobile'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['member_email'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['device_reg'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo $list['ip_reg'];?></div>
+                    <div class="col pt-w-10  tc"><?php echo date("Y-m-d",$list['time_reg']);?></div>
+                    <div class="col pt-w-10 tc">
+                        <a href="/manage/member/member_edit?id=<?php echo $list['member_id']; ?>" class="button button-gray"
+                          >编辑</a>
+                        <a href="/manage/member/member_del?id=<?php echo $list['member_id']; ?>" class="button button-gray"
+                           onclick="return confirm('确认删除？');">删除</a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

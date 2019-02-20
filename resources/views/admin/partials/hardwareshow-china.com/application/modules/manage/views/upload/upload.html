@@ -1,0 +1,44 @@
+<style>
+    *{padding: 0; margin: 0;}
+
+    .upload_file{
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .upload_btn{
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+    }
+</style>
+<script language="javascript">
+    function chk() {
+        Ary = form2.userfile.value.split('.');
+        filetype=Ary[Ary.length-1];
+        if (filetype!='svg' && filetype!='doc' && filetype!='docx' && filetype!='xls' && filetype!='xlsx' && filetype!='txt' && filetype!='pdf' && filetype!='jpg' && filetype!='JPG' && filetype!='JPEG' && filetype!='GIF' && filetype!='jpeg' && filetype!='gif' && filetype!='png' && filetype!='PNG' && filetype!='rar' && filetype!='zip')
+        {
+            alert ('[系统提示]\n\n文件格式Word、Excel、Txt、Pdf、Zip、Rar   图片格式Png、Jpg、Jpeg、Gif');
+            return false;
+        }
+    }
+</script>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <form method="post" action="" enctype="multipart/form-data" name="form2" onSubmit="return chk()">
+        <tr height="2">
+            <td height="2" valign="middle"></td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <input name="userfile" type="file" class="upload_file" id="upfile" size="63">
+                <br/>
+                <input TYPE="submit" name="submit" class="upload_btn" VALUE="上传">
+
+                <input type="hidden" name="backinput" value="<?php echo $this->param['backinput']; ?>">
+                <input type="hidden" name="backview" value="<?php echo $this->param['backview']; ?>">
+            </td>
+        </tr>
+    </form>
+</table>

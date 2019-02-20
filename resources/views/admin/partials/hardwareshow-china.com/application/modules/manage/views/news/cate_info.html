@@ -1,0 +1,94 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+<?php
+define(PID,$this->category['pid'])?>
+
+<?php function select_list($plist){
+ foreach($plist as $list){?>
+<option value="<?php echo $list['category_id'];?>" <?php if($list['category_id']==PID){ echo "SELECTED";}?>><?php echo $list['category_name'];?></option>
+<?php if(isset($list['son_cate'])){?>
+<?php select_list($list['son_cate']);}}}?>
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/news/cate_list" class="button button-blue">返回分类列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">父级分类</div>
+                <div class="fl pt-w-85">
+                    <div class="select">
+                        <select name="pid" <?php if ($this->category['category_id']){ echo
+                        "disabled='disabled'";}?>>
+                            <option value=""> - 请选择 - </option>
+                            <?php select_list($this->category_info );?>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">分类标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="category_name" value="<?php echo $this->category['category_name']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">模版选择</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="template" value="1" <?php if($this->category['template']==1) {echo "CHECKED";}?>>
+                        <span class="radioInput" style="margin-top: 5px; vertical-align: top;"></span>
+                        <img src="/img/template_news1.jpg" alt="">
+                    </label>
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="template" value="2" <?php if($this->category['template']==2) {echo "CHECKED";} ?> >
+                        <span class="radioInput" style="margin-top: 5px; vertical-align: top;"></span>
+                        <img src="/img/template_news2.jpg" alt="">
+                    </label>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">静态页面名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="template_name" value="<?php echo $this->category['template_name']; ?>" placeholder="为空则使用静态页面设置的URL构成方式，不要加html后缀，不支持特殊字符"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->category['sort_id']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <a href="javascript:document:form_sub.submit();" class="button button-blue">提交</a>
+                    <a href="javascript:history.back(-1)" class="button button-gray">取消</a>
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

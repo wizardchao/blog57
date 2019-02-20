@@ -1,0 +1,184 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+<?php
+define(PID,$this->product['category_id'])?>
+
+<?php function select_list($plist){
+ foreach($plist as $list){?>
+<option value="<?php echo $list['category_id'];?>" <?php if($list['category_id']==PID){ echo "SELECTED";}?>><?php echo $list['category_name'];?></option>
+<?php if(isset($list['son_cate'])){?>
+<?php select_list($list['son_cate']);}}}?>
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+            <div class="right-btns">
+                <a href="/manage/product/pro_list" class="button button-blue">返回产品列表</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品分类</div>
+                <div class="fl pt-w-500">
+                    <div class="select">
+                        <select name="category_id" >
+                        <option value=""> - 请选择 - </option>
+                            <?php select_list($this->category_info );?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="name" value="<?php echo $this->product['name']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品主图</div>
+                <div class="fl pt-w-85">    <input name="main_img_url" type="text" id="main_img_url" size="50" class="form-control" value="<?php echo $this->product['main_img_url'];?>"/> <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=main_img_url&backview=view_news_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img style="width:120px;" src="<?php if($this->product['main_img_url']) {echo DOMAIN_IMG."/".$this->product['main_img_url'];} else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+                    </div></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">库存量</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="stock" value="<?php echo $this->product['stock']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品单价</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="price" value="<?php echo $this->product['price']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">产品摘要</div>
+                <div class="fl pt-w-85"><textarea
+                        name="summary" class="textarea px-w-500"><?php echo $this->product['summary'];?></textarea>
+                </div>
+            </div>
+
+            <?php foreach($this->property as $name=>$detail){?>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15"><?php echo $name?></div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="<?php echo $name?>" value="<?php echo $detail; ?>"></div>
+            </div>
+            <?php }?>
+            <div class="row clearfix">
+                <label class="fl col-label pt-w-15">banner图</label>
+                <div class="fl pt-w-85">
+                    <div class="uploader-list-container">
+                        <div class="queueList">
+                            <div id="dndArea" class="placeholder element-invisible">
+                                <div id="filePicker-2" class="webuploader-container">
+                                    <div class="webuploader-pick webuploader-pick-hover">点击选择图片</div>
+                                    <div id="rt_rt_1c77in5vi1oq7mgv1rdi1jmf1utg1" style="position: absolute; top: 20px; left: 0px; width: 168px; height: 44px; overflow: hidden; bottom: auto; right: auto;">
+                                        <input type="file" name="file" class="webuploader-element-invisible" multiple="multiple" accept="image/*">
+                                        <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
+                                    </div>
+                                </div>
+                                <p>或将照片拖到这里，单次最多可选300张</p>
+                            </div>
+
+                        </div>
+
+                        <div class="statusBar" style="">
+                            <div class="progress" style="display: none;">
+                                <span class="text">0%</span> <span class="percentage" style="width: 0%;"></span>
+                            </div>
+                            <div class="info"></div>
+                            <div class="btns">
+                                <div id="filePicker2" class="webuploader-container"><div class="webuploader-pick">继续添加</div>
+                                    <div id="rt_rt_1c77in5vn7761c9mudq15m41s7v6" style="position: absolute; top: 0px; left: 10px; width: 94px; height: 42px; overflow: hidden; bottom: auto; right: auto;">
+                                        <input type="file" name="file" class="webuploader-element-invisible" multiple="multiple" accept="image/*"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
+                                    </div>
+                                </div>
+                                <div class="uploadBtn state-ready">开始上传</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">商品详情</div>
+                <div class="fl pt-w-84"><textarea name="pro_detail" style="width:100%;height:500px;visibility:hidden;"><?php echo $this->detail;?></textarea></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<link rel="stylesheet" href="/css/webuploader.css"/>
+<script type="text/javascript" src="/js/H-ui.js"></script>
+
+<script type="text/javascript" src="/js/webuploader.min.js"></script>
+
+<script type="text/javascript">
+    SCOPE={
+        'upload_url':"/manage/upload/upload_local",
+        'image_url':"/manage/product/pro_banner_img_get?product_id=<?php echo $this->product['product_id'];?>",
+        'image_del':"/manage/product/pro_banner_img_del",
+    }
+</script>
+<script type="text/javascript" src="/js/upload.js"></script>
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="pro_detail"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

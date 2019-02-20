@@ -1,0 +1,93 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+            <div class="right-btns">
+                <a href="/manage/member/member_list" class="button button-blue">返回列表</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">会员姓名</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="member_name" value="<?php echo $this->param['member_name']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">性别</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="member_gender" value="1" <?php if($this->param['member_gender']==1) {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>男</em>
+                    </label>
+                    <label class="label-ele">
+                        <input class="radio" type="radio" name="member_gender" value="2" <?php if($this->param['member_gender']==2) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>女</em>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">手机号码</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="member_mobile" value="<?php echo $this->param['member_mobile']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">邮箱地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="member_email" value="<?php echo $this->param['member_email']; ?>"></div>
+            </div>
+
+            <!--<div class="row clearfix">-->
+                <!--<div class="fl col-label pt-w-15">设备</div>-->
+                <!--<div class="fl pt-w-85">-->
+                    <!--<div class="select">-->
+                        <!--<select name="device_reg" >-->
+                            <!--<option value=""> - 请选择 - </option>-->
+                            <!--<?php foreach($this->device_list as $key => $value){?>-->
+                            <!--<option value="<?php echo $value;?>" <?php if($key==$this->param['device_reg']){ echo "SELECTED";}?>><?php echo $value;?></option>-->
+                            <!--<?php } ?>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">密码</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="member_password" value=" " placeholder=" "></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+    </div>
+</div>
+<!-- } right container -->
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,83 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->cate_
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/about/cate_add" class="button button-blue">添加栏目分类</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <div class="fl col-label px-w-60 lh-32">栏目编号</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['about_category_id'];?>" name="about_category_id">
+            </div>
+
+            <div class="fl col-label px-w-60 lh-32">分类标题</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['about_category_title'];?>" name="about_category_title">
+            </div>
+
+
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue ml20">搜索</a>
+            </div>
+        </form>
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-25 tc">栏目分类编号</div>
+                    <div class="col pt-w-25 tc">栏目分类标题</div>
+                    <div class="col pt-w-25 tc">排序</div>
+                    <div class="col pt-w-25 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->cate_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-25  tc"><?php echo $list['about_category_id'];?></div>
+                    <div class="col pt-w-25  tc"><?php echo $list['about_category_title'];?></div>
+                    <div class="col pt-w-25  tc"><?php echo $list['sort_id'];?></div>
+                    <div class="col pt-w-25 tc">
+                        <a href="/manage/about/cate_edit?about_category_id=<?php echo $list['about_category_id']; ?>" class="button button-blue">编辑</a>
+                        <a href="/manage/about/cate_del?about_category_id=<?php echo $list['about_category_id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">删除</a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,173 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap px-h-40 lh-40">
+            <div class="fz14 fwb">
+                <a href="/manage/article/index" class="button button-blue"> &lt; 返回活动列表</a>
+                <span class="ml20"><?php echo $this->article['title']; ?></span>
+            </div>
+
+            <div class="right-btns">
+                <a href="/manage/article/clist/?article_id=<?php echo $this->param['view_article_id']; ?>" class="button button-blue">返回文章列表</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">所属展会文章</div>
+                <div class="fl pt-w-85">
+                    <div class="select">
+                        <select name="article_id" >
+                            <option value=""> - 请选择 - </option>
+                            <?php
+                                foreach( $this->article_list as $rs ){
+                            ?>
+                            <option value="<?php echo $rs['article_id']; ?>" <?php
+                                if( $this->param['article_id'] && $rs['article_id'] == $this->param['article_id'] ){
+                                    echo 'selected';
+                                } else if( $rs['article_id'] == $this->param['view_article_id'] ) {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $rs['title']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-400" name="title" value="<?php echo $this->param['title']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">横幅banner</div>
+                <div class="fl pt-w-85">
+                    <label class="label-ele J_is_banner_btn" data-type="1">
+                        <input class="radio" type="radio" name="is_banner" value="0" <?php if($this->param['is_banner']==0) {echo "CHECKED";}?>>
+                        <span class="radioInput"></span>
+                        <em>不需要</em>
+                    </label>
+                    <label class="label-ele J_is_banner_btn" data-type="0">
+                        <input class="radio" type="radio" name="is_banner" value="1" <?php if($this->param['is_banner']==1) {echo "CHECKED";} ?> >
+                        <span class="radioInput"></span>
+                        <em>需要</em>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row clearfix J_is_banner <?php echo $this->param['is_banner'] == 0 ? 'none' : ''; ?>">
+                <div class="fl col-label pt-w-15">上传横幅banner</div>
+                <div class="fl pt-w-85">    <input name="banner_img" type="text" id="banner_img" size="50" class="input px-w-300" value="<?php echo $this->param['banner_img'];?>"/><br/>
+
+                    <iframe src="/manage/upload/index/?backinput=banner_img&backview=view_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img src="<?php if($this->param['banner_img']) {echo DOMAIN_IMG."/".$this->param['banner_img'];} else { echo $this->yulan_jpg; }?>" id="view_img" />
+                    </div></div>
+            </div>
+
+            <div class="row clearfix J_is_banner <?php echo $this->param['is_banner'] == 0 ? 'none' : ''; ?>">
+                <div class="fl col-label pt-w-15">横幅标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="banner_title" value="<?php echo $this->param['banner_title']; ?>"></div>
+            </div>
+
+            <div class="row clearfix J_is_banner <?php echo $this->param['is_banner'] == 0 ? 'none' : ''; ?>">
+                <div class="fl col-label pt-w-15">横幅链接</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="banner_url" value="<?php echo $this->param['banner_url']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">内容</div>
+                <div class="fl pt-w-84"><textarea name="content" style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['desc'];?></textarea></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">页面标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-300" name="page_title" value="<?php echo $this->param['page_title']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">页面关键字</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="page_keyword" value="<?php echo $this->param['page_keyword']; ?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">页面描述</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="page_description" value="<?php echo $this->param['page_description']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id" value="<?php echo $this->param['sort_id'] ? $this->param['sort_id'] : 255; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="content"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+
+    $(function(){
+        $('.J_is_banner_btn').on('click', function(e){
+            var _this = $(this),
+                _type = _this.attr('data-type');
+
+            if( _type == 0 ){
+                $('.J_is_banner').show();
+            } else {
+                $('.J_is_banner').hide();
+            }
+        });
+    });    
+</script>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

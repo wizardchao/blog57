@@ -1,0 +1,74 @@
+z<footer>
+	<div class="grid-wrapper darkback">
+    <div class="gw-inner">
+        <div class="inner">
+            <div class="col-left">
+                <div class="nlform">
+                    <h2 class="hl_3">邮件订阅</h2>
+                    <form  method="post" action="<?php echo 'http:'.DOMAIN_WWW; ?>/index/subscribe" >
+                        <div>
+                            <label for="email" class="ui-helper-hidden-accessible">电子邮件</label>
+                            <input type="email" name="email" id="email" placeholder="电子邮件" class="textfield">
+                        </div>
+                        <div>
+                            <label for="visitor-type" class="ui-helper-hidden-accessible">我是..</label>
+                            <div class="styled_select no_touch_only">
+                                <div class="toggle">我是..</div>
+                                <div class="select_options">
+                                    <div class="inner ani">
+                                        <div class="entry"><span>展商</span></div>
+                                        <div class="entry"><span>观众</span></div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="visitor-type" id="visitor-type" value="">
+                            </div>
+                            <select name="visitor-type" id="visitor-type-touch" class="touch_only" >
+                                <option value="">我是..</option>
+                                <option value="1">展商</option>
+                                <option value="2" selected >观众</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn primary lightback medium"
+                                    name="subscribe" value="订阅">
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="socials">
+										<a href="javascript:void(0)" title="Facebook"><img
+										src="<?PHP echo DOMAIN_STATIC; ?>/img/icons/icon_social_facebook_small_light.svg" width="30" height="30" alt="Facebook"
+										title="Facebook"></a>
+										<a href="javascript:void(0)" title="Twitter"><img
+										src="<?PHP echo DOMAIN_STATIC; ?>/img/icons/icon_social_twitter_small_light.svg" width="30" height="25" alt="Twitter"
+										title="Twitter"></a>
+										<a href="javascript:void(0)" title="Linkedin"><img
+										src="<?PHP echo DOMAIN_STATIC; ?>/img/icons/icon_social_linkedin_small_light.svg" width="18" height="17" alt="Linkedin"
+										title="Linkedin"></a>
+                </div>
+                <div class="meta light">
+                    <a href="http://www.ihf-cologne.cn/" title="link primary" class="primarylink noline"><span>隐私条款</span></a>
+                    <div class="inner">
+											<?php foreach($this->link_list as $el){ ?>
+												<a href="<?php echo $el['link_url']; ?>" title="<?php echo $el['link_title']; ?>" class="noline"><?php echo $el['link_title']; ?></a>
+											<?php } ?>
+                                      </div>
+                </div>
+            </div><!-- // col-left -->
+
+            <div class="col-right">
+							<?php echo $this->configInfo['company']; ?>
+                <!-- <div class="organiser clfix">
+                    <strong>主办单位:</strong>
+                    <a href="javascript:void(0)" title="Organiser 1"><img src="<?PHP echo DOMAIN_STATIC; ?>/img/layout/logo_organiser_1.png" alt="Organiser 1" title="Organiser 1"></a>
+
+                    <a href="javascript:void(0)" title="Koelnmesse"><img src="<?PHP echo DOMAIN_STATIC; ?>/img/layout/logo_koelnmesse_footer.png" alt="Koelnmesse" title="Koelnmesse"></a>
+                    <img src="<?PHP echo DOMAIN_STATIC; ?>/img/layout/logo_organiser_2.png" alt="Organiser 2" title="Organiser 2">
+                </div> -->
+            </div><!-- // col-right -->
+        </div><!-- // inner -->
+    </div>
+
+</div>
+</footer>

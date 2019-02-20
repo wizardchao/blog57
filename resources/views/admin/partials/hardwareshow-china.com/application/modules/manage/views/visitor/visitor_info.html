@@ -1,0 +1,80 @@
+\<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('<a href="/manage/visitor/visitor_list" class="button button-blue">返回列表</a>');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="visitor_title"
+                                               value="<?php echo $this->param['visitor_title']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">上传图片</div>
+                <div class="fl pt-w-85"><input name="pic" type="text" size="50" id="data_img" class="input px-w-300"
+                                               value="<?php echo $this->param['visitor_img'];?>"/><br/>
+
+                    <iframe src="/manage/upload/index/?backinput=data_img&backview=view_data_img" frameborder="0"
+                            style="width: 100%; height: 70px;" scrolling="no"></iframe>
+                    <br/>
+
+                    <div class="view_img">
+                        <img src="<?php if($this->param['visitor_img']) {echo DOMAIN_IMG."/".$this->param['visitor_img'];}
+                        else { echo $this->yulan_jpg; }?>" id="view_data_img" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">链接地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="visitor_link"
+                                               value="<?php echo $this->param['visitor_link']; ?>">
+                </div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">排序</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-200" name="sort_id"
+                                               value="<?php echo $this->param['sort_id']; ?>"></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue">
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);"
+                           value="取消">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,43 @@
+<?php if($this->sideBarType || $this->info['template']==1){ ?>
+<div class="sidebar_ad" id="sidebar"   >
+    <div class="inner" style="background:#fff;">
+        <div class="holder" >
+          <div class="right">
+            <ul class="list">
+              <?php if($this->sideBarType==1){ foreach($this->c_list as $el){ ?>
+                <li <?php if($el['category_id']==$this->param['category_id']){ ?>class="active" <?php } ?> ><a href="/news?category_id=<?php echo $el['category_id']; ?>"><?php echo $el['category_name']; ?></a></li>
+              <?php  } ?>
+              <li <?php if(1091==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/news/multimedia_gallery">展会掠影</a></li>
+              <li <?php if(1090==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/news/media_partners">合作媒体</a></li>
+            <?php  }elseif($this->sideBarType==3){ ?>
+                <li <?php if(!$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/event">行业交流会</a></li>
+                <li <?php if(1083==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/event/desc?about_id=1083">商务对接</a></li>
+                <li <?php if(1084==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/event/desc?about_id=1084">行业交流会</a></li>
+            <?php }elseif($this->sideBarType==2){ ?>
+              <li <?php if(!$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/exhibitor">展商列表</a></li>
+              <li <?php if(1==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/exhibitor/product_list">产品列表</a></li>
+              <li <?php if(1048==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/exhibitor/desc?about_id=1048">展位图</a></li>
+              <li <?php if(1050==$this->param['category_id']){ ?>class="active" <?php } ?>><a href="/exhibitor/desc?about_id=1050">商务对接</a></li>
+            <?php } else{ ?>
+              <?php foreach($this->c_list as $el){?>
+                 <li <?php if($el['about_id']==$this->info['about_id']){ ?>class="active" <?php } ?> ><a href="/about?id=<?php echo $el['about_id']; ?>"><?php echo $el['about_title']; ?></a></li>
+              <?php } } ?>
+              <!-- <li class="active"><a href="general-information.php">为何选择</a></li>
+              <li><a href="facts&figures.php">展会概况</a></li>
+              <li><a href="venue-map.php">导览图</a></li>
+              <li><a href="market-data.php">市场数据</a></li>
+              <li><a href="organisers.php">主办单位</a></li> -->
+            </ul>
+
+              <!--联络方式-->
+               <?php echo $this->configInfo['contact_way']; ?>
+
+
+              <!--图片广告位-->
+              <div class="tupian">
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+<?php } ?>

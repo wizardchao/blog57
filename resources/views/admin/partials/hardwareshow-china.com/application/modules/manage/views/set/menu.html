@@ -1,0 +1,113 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- 2级菜单 { -->
+        <div class="nav-wrap">
+            <ul class="nav-lists clearfix">
+                <li><a href="/manage/set/index/" >站点设置</a></li>
+                <li><a href="/manage/ad/ad_list/" >广告位设置</a></li>
+                <li><a href="/manage/subscription/subscription_list/">邮件订阅</a></li>
+                <li><a href="/manage/set/menu_list/" class="on">菜单设置</a></li>
+            </ul>
+            <div id="navLine" class="nav-line"></div>
+        </div>
+        <!-- } 2级菜单 -->
+        <!-- tab { -->
+        <div class="tabs-wrap" style="height:40px;">
+            <i class="tabs-line"></i>
+            <div class="right-btns">
+                <a href="/manage/set/menu_add" class="button button-blue">添加菜单</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <div class="fl col-label px-w-60 lh-32">菜单编号</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['menu_id'];?>" name="menu_id">
+            </div>
+
+            <div class="fl col-label px-w-60 lh-32">菜单名</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['menu_name'];?>" name="menu_name">
+            </div>
+
+            <!--<div class="fl col-label px-w-60 lh-32">上级菜单名</div>-->
+            <!--<div class="fl px-w-120 select ml20" >-->
+                    <!--<select name="pid">-->
+                        <!--<option value="0" > - 请选择 - </option>-->
+                        <!--<?php foreach($this->menu_list as $menu){ if($menu['menu_classname']){?>-->
+
+                        <!--<option value="<?php echo $menu['id'];?>" <?php if($this->param['pid']===$menu['id']){ echo "selected";}?>><?php echo $menu['menu_name']; ?></option>-->
+                        <!--<?php } } ?>-->
+                    <!--</select>-->
+            <!--</div>-->
+
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue">搜索</a>
+            </div>
+        </form>
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-5 tc"></div>
+                    <div class="col pt-w-30">菜单名</div>
+                    <!--<div class="col pt-w-15 tc">class名</div>-->
+                    <div class="col pt-w-20 tc">链接</div>
+                    <div class="col pt-w-15 tc">状态</div>
+                    <div class="col pt-w-10 tc">排序</div>
+                    <div class="col pt-w-20 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->menu_list as $menu){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-5  tc"></div>
+                    <div class="col pt-w-30 <?php echo $menu['class']; ?>"><?php echo $menu['menu_name'];?></div>
+                    <!--<div class="col pt-w-15  tc"><?php echo $menu['menu_classname'];?></div>-->
+                    <div class="col pt-w-20  tc"><?php echo $menu['link']; ?></div>
+
+                    <div class="col pt-w-15  tc"><?php echo ($menu['view']==1)?"显示":" "; ?></div>
+                    <div class="col pt-w-10  tc"><?php echo $menu['sort_id']; ?></div>
+                    <div class="col pt-w-20  tc">
+                        <a href="/manage/set/menu_edit?menu_id=<?php echo $menu['id']; ?>" class="button button-blue">编辑</a>
+                        <a href="/manage/set/menu_del?menu_id=<?php echo $menu['id']; ?>" class="button button-gray" onclick="return confirm('确认删除？');">删除</a>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

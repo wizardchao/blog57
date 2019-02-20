@@ -1,0 +1,166 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+			<!-- 横向菜单 { -->
+			<?php
+				 $nav['btns'] = array('');
+					 include($this->_base_name . '/inc/cross_menu.html');
+			?>
+			<!-- } 横向菜单 -->
+        <!-- forms { -->
+        <form class="forms" method="post" action="" id="form_sub">
+            <!--<div class="forms">-->
+
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">联系我们</div>
+                <div class="fl pt-w-84"><textarea name="contact"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['contact'];?></textarea></div>
+            </div>
+
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">合作伙伴</div>
+                <div class="fl pt-w-84"><textarea name="partner"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['partner'];?></textarea></div>
+            </div>
+
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">主办单位</div>
+                <div class="fl pt-w-84"><textarea name="company"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['company'];?></textarea></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">版权</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-450" name="copyright"
+                                               value="<?php echo $this->param['copyright']; ?>"></div>
+            </div>
+
+            <div class="row clearfix content_show">
+                <div class="fl col-label pt-w-15">隐私声明</div>
+                <div class="fl pt-w-84"><textarea name="secret"
+                                                  style="width:100%;height:500px;visibility:hidden;"><?php echo $this->param['secret'];?></textarea></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="submit" class="button button-blue" value="提交">
+                    <input type="button" class="button button-gray" value="取消" onclick="javascript:history.back(-1)">
+                </div>
+            </div>
+            <!--</div>-->
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<link rel="stylesheet" href="/manage/src/kindeditor/themes/default/default.css"/>
+<link rel="stylesheet" href="/manage/src/kindeditor/plugins/code/prettify.css"/>
+<script charset="utf-8" src="/manage/src/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="/manage/src/kindeditor/plugins/code/prettify.js"></script>
+<script>
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="contact"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="partner"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="company"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+
+    KindEditor.ready(function (K) {
+        var editor1 = K.create('textarea[name="secret"]', {
+            cssPath: '/manage/src/kindeditor/plugins/code/prettify.css',
+            uploadJson: '/manage/src/kindeditor/php/upload_json.php',
+            fileManagerJson: '/manage/src/kindeditor/php/file_manager_json.php',
+            allowFileManager: true,
+            afterCreate: function () {
+                var self = this;
+                K.ctrl(document, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function () {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

@@ -1,0 +1,87 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <?php
+	        include($this->_base_name . '/webset/common.html');
+        ?>
+
+        <form class="forms" method="post" action="/manage/webset/system" id="form_sub">
+            <input type="hidden" class="input px-w-500" name="set_info" value="base">
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">网站名称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_name" value="<?php echo $this->param['site_name'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">SEO标题</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_seo_title" value="<?php echo $this->param['site_seo_title'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">SEO关键词</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_seo_key" value="<?php echo $this->param['site_seo_key'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">SEO描述</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_seo_decription" value="<?php echo $this->param['site_seo_decription'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">网站电话</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_tel" value="<?php echo $this->param['site_tel'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">网站邮箱</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_email" value="<?php echo $this->param['site_email'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">办公地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_work_address" value="<?php echo $this->param['site_work_address'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">网站logo</div>
+                <div class="fl pt-w-85">    <input name="site_logo" type="text" id="news_img" size="50" class="input px-w-300" value="<?php echo $this->param['site_logo'];?>"/> <br/>
+
+                    <iframe src="/manage/upload/index/?backinput=news_img&backview=view_news_img" frameborder="0" style="width: 100%; height: 70px;" scrolling="no"></iframe><br/>
+
+                    <div class="view_img">
+                        <img src="<?php if($this->param['site_logo']) {echo DOMAIN_IMG."/".$this->param['site_logo'];} else { echo $this->yulan_jpg; }?>" id="view_news_img" />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">底部版权信息</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_copyright" value="<?php echo $this->param['site_copyright'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">备案号</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="site_icp" value="<?php echo $this->param['site_icp'];?>"></div>
+            </div>
+
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">百度统计代码</div>
+                <div class="fl pt-w-85"><textarea
+                        name="site_baidu_stati" class="textarea px-w-500"><?php echo $this->param['site_baidu_stati'];?></textarea></div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <a href="javascript:document:form_sub.submit();" class="button button-blue">保存信息</a>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

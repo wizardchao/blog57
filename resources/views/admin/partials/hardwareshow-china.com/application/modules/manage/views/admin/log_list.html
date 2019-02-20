@@ -1,0 +1,78 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- 横向菜单 { -->
+        <?php
+           $nav['btns'] = array();
+           include($this->_base_name . '/inc/cross_menu.html');
+        ?>
+        <!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <div class="fl col-label px-w-60 lh-32">人员名称</div>
+            <div class="fl px-w-120 select ml20" >
+            <select name="id">
+            <option value="0" > - 请选择 - </option>
+            <?php foreach($this->user_list as $list){ ?>
+            <option value="<?php echo $list['id'];?>" <?php if($this->param['id']===$list['id']){ echo "selected";}?>><?php echo $list['username']; ?></option>
+            <?php  } ?>
+            </select>
+            </div>
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue ml20">搜索</a>
+            </div>
+        </form>
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-25 tc">日志编号</div>
+                    <div class="col pt-w-25 tc">人员名称</div>
+                    <div class="col pt-w-25 tc">登录IP</div>
+                    <div class="col pt-w-25 tc">登录时间</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->log_list as $list){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-25  tc"><?php echo $list['log_id'];?></div>
+                    <div class="col pt-w-25  tc"><?php echo $list['username'];?></div>
+                    <div class="col pt-w-25  tc"><?php echo $list['login_ip'];?></div>
+                    <div class="col pt-w-25  tc"><?php echo ($list['login_tm'])?date("Y-m-d H:i:s",$list['login_tm']):'';?></div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

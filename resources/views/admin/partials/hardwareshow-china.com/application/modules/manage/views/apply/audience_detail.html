@@ -1,0 +1,146 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+
+				<!-- 横向菜单 { -->
+				<?php
+					 $nav['btns'] = array('');
+						 include($this->_base_name . '/inc/cross_menu.html');
+				?>
+				<!-- } 横向菜单 -->
+
+        <!-- forms { -->
+        <form class="forms" method="post" action="/manage/apply/audience_update/">
+            <div class="row clearfix mt20">
+                <div class="fl col-label pt-w-15 fwb fz16">用户提交信息</div>
+                <div class="fl pt-w-85"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系人</div>
+                <div class="fl pt-w-85"><?php echo $this->param['contact']; ?>/<?php echo $this->param['gender']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">职位</div>
+                <div class="fl pt-w-85"><?php echo $this->param['position']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">公司</div>
+                <div class="fl pt-w-85"><?php echo $this->param['company']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系电话</div>
+                <div class="fl pt-w-85"><?php echo $this->param['tel']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">联系邮箱</div>
+                <div class="fl pt-w-85"><?php echo $this->param['email']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">网址</div>
+                <div class="fl pt-w-85"><?php echo $this->param['website']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">公司年度采购量</div>
+                <div class="fl pt-w-85"><?php echo $this->param['company_purchase']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">公司主营业务</div>
+                <div class="fl pt-w-85"><?php echo $this->param['company_business']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">采购类别</div>
+                <div class="fl pt-w-85"><?php echo $this->param['purchase']; ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">提交时间</div>
+                <div class="fl pt-w-85"><?php echo date('Y-m-d H:i:s', $this->param['tm_create']); ?></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">提交IP</div>
+                <div class="fl pt-w-85 c9"><?php echo $this->param['submit_ip']; ?></div>
+            </div>
+
+            <div class="row clearfix mt20">
+                <div class="fl col-label pt-w-15 fwb fz16">住宿信息</div>
+                <div class="fl pt-w-85"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">住宿酒店</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-400" name="h_hotel" value="<?php echo $this->param['h_hotel']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">房型</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-400" name="h_room" value="<?php echo $this->param['h_room']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">宾客姓名</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-100" name="h_guest1" value="<?php echo $this->param['h_guest1']; ?>">
+                    <input type="text" class="input px-w-100" name="h_guest2" value="<?php echo $this->param['h_guest2']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">入住日期</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-100" name="h_date_start" value="<?php echo $this->param['h_date_start']; ?>">
+                    <input type="text" class="input px-w-100" name="h_date_end" value="<?php echo $this->param['h_date_end']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">入住时间</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-100" name="h_time" value="<?php echo $this->param['h_time']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">付款方式</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-100" name="h_payment" value="<?php echo $this->param['h_payment']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">报销须知</div>
+                <div class="fl pt-w-85">
+                    <input type="text" class="input px-w-400" name="h_baoxiao" value="<?php echo $this->param['h_baoxiao']; ?>">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">最后更新时间</div>
+                <div class="fl pt-w-85">
+                    <?php echo $this->param['h_tm_update'] ? date('Y-m-d H:i:s', $this->param['h_tm_update']) :  date('Y-m-d H:i:s', time()); ?>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <input type="hidden" name="id" value="<?php echo $this->param['id']; ?>">
+                    <input type="submit" class="button button-blue" value="变更登记" >
+                    <input type="button" class="button button-gray" onclick="javascript:window.history.back(-1);" value="返回">
+                </div>
+            </div>
+        </form>
+        <!-- } forms -->
+
+
+    </div>
+</div>
+<!-- } right container -->
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

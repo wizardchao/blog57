@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>系统管理</title>
+	<link rel="stylesheet" href="<?php echo DOMAIN_MANAGE; ?>/css/login.css" />
+</head>
+<body>
+
+
+	<div class="login">
+		<section class="wrap animated rubberBand">
+			<header class="hd">System</header>
+			<p class="tips">
+				Welcome to background management system!
+			</p>
+	
+			<form action="/manage/index/logincheck" id="login_form" method="post">
+				<ul class="l-list">
+					<li>
+						<input class="animated" name="login_username" type="text" placeholder="请输入帐号" autocomplete="off">
+					</li>
+					<li>
+						<input class="animated" name="login_password" type="password" placeholder="请输入密码" autocomplete="off">
+					</li>
+				</ul>
+			</form>
+
+			<a href="javascript:;" class="btn-login" id="login_btn">登录</a>
+
+			<footer class="footer">
+				Copyright &copy; 2018 by HuixiangInc
+			</footer>
+		</section>
+	</div>
+
+
+<script src="<?php echo DOMAIN_MANAGE; ?>/js/require.min.js" data-main="<?php echo DOMAIN_MANAGE; ?>/js/login.js"></script>
+</body>
+</html>

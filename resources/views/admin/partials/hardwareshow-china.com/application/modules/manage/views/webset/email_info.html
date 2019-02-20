@@ -1,0 +1,58 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <?php
+	        include($this->_base_name . '/webset/common.html');
+        ?>
+
+        <form class="forms" method="post" action="/manage/webset/system" id="form_sub">
+            <input type="hidden" class="input px-w-500" name="set_info" value="email" >
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">SMTP服务器</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="email_smtp_sever" value="<?php echo $this->param['email_smtp_sever'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">SMTP 端口</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="email_smtp_port" value="<?php echo $this->param['email_smtp_port'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">发件人昵称</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="email_nickname"  value="<?php echo $this->param['email_nickname'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">邮箱帐号</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="email_smtp_accout" value="<?php echo $this->param['email_smtp_accout'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">邮箱密码</div>
+                <div class="fl pt-w-85"><input type="password" class="input px-w-500" name="email_smtp_pwd" value="<?php echo $this->param['email_smtp_pwd'];?>"></div>
+            </div>
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">收件邮箱地址</div>
+                <div class="fl pt-w-85"><input type="text" class="input px-w-500" name="email_smtp_receive" value="<?php echo $this->param['email_smtp_receive'];?>"></div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="fl col-label pt-w-15">&nbsp;</div>
+                <div class="fl pt-w-85">
+                    <a href="javascript:document:form_sub.submit();" class="button button-blue">保存信息</a>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>

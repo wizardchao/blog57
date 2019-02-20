@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css"/>
+<style type="text/css">
+
+.custom-date-style {
+	background-color: red !important;
+}
+
+.input{
+}
+.input-wide{
+	width: 500px;
+}
+
+</style>
+</head>
+<body>
+
+	<h3>DateTimePicker</h3>
+	<input type="text" value="" id="datetimepicker"/><br><br>
+</body>
+<script src="jquery.js"></script>
+<script src="build/jquery.datetimepicker.full.js"></script>
+<script>/*
+window.onerror = function(errorMsg) {
+	$('#console').html($('#console').html()+'<br>'+errorMsg)
+}*/
+
+$.datetimepicker.setLocale('en');
+$('#datetimepicker').datetimepicker({
+dayOfWeekStart : 1,
+lang:'en',
+disabledDates:[],
+startDate:	'2019/02/01'
+});
+$('#datetimepicker').datetimepicker({value:'',step:10});
+</script>
+</html>

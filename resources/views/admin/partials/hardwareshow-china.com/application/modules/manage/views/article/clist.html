@@ -1,0 +1,96 @@
+<?php
+	include($this->_base_name . '/inc/framework_header.html');
+?>
+
+
+<!-- 面包屑 { -->
+<?php
+	include($this->_base_name . '/inc/crumbs.html');
+?>
+<!-- } 面包屑 -->
+
+
+<!-- right container { -->
+<div class="right-container" id="J_container_right">
+    <div class="container">
+        <!-- tab { -->
+        <div class="tabs-wrap px-h-40 lh-40">
+            <div class="fz14 fwb">
+                <a href="/manage/article/index" class="button button-blue"> &lt; 返回展会文章列表</a>
+                <span class="ml20"><?php echo $this->article['title']; ?></span>
+            </div>
+
+            <div class="right-btns">
+                
+                <a href="/manage/article/cae/?view_article_id=<?php echo $this->param['article_id']; ?>" class="button button-blue">添加文章</a>
+            </div>
+        </div>
+        <!-- } tab -->
+
+        <!-- forms { -->
+        <!--
+        <form class="pt10 pb10 clearfix" method="get" action="" id="search_form">
+            <div class="fl col-label px-w-60 lh-32">栏目标题</div>
+            <div class="fl px-w-200">
+                <input type="text" class="fl input px-w-150" value="<?php echo $this->param['about_title'];?>" name="about_title">
+            </div>
+
+            <div class="fl col-label px-w-60 lh-32">栏目分类</div>
+            <div class="fl px-w-120 select ml20" >
+                <select name="about_category_id">
+                    <option value="0" > - 请选择 - </option>
+                    <?php foreach($this->cate_list as $list){ ?>
+                    <option value="<?php echo $list['about_category_id'];?>" <?php if($this->param['about_category_id']===$list['about_category_id']){ echo "selected";}?>><?php echo $list['about_category_title']; ?></option>
+                    <?php  } ?>
+                </select>
+            </div>
+
+            <div class="fl px-w-30">
+                <a href="javascript:document:search_form.submit();" class="button button-blue ml20">搜索</a>
+            </div>
+        </form>
+        -->
+        <!-- } forms -->
+
+        <!-- table { -->
+        <div class="table-container pt-w-100">
+            <div class="table-head">
+                <div class="row clearfix">
+                    <div class="col pt-w-10 tc">编号</div>
+                    <div class="col pt-w-60">标题</div>
+                    <div class="col pt-w-10 tc">排序</div>
+                    <div class="col pt-w-20 tc">操作</div>
+                </div>
+            </div>
+            <div class="table-body">
+                <?php foreach($this->list as $rs){ ?>
+                <div class="row clearfix">
+                    <div class="col pt-w-10 tc"><?php echo $rs['article_child_id']; ?></div>
+                    <div class="col pt-w-60"><?php echo $rs['title'];?></div>
+                    <div class="col pt-w-10 tc"><?php echo $rs['sort_id']; ?></div>
+                    <div class="col pt-w-20 tc">
+                        <i><a href="/manage/article/cae?view_article_id=<?php echo $this->article['article_id']; ?>&article_child_id=<?php echo $rs['article_child_id']; ?>">编辑</a></i>
+                        <i><a href="/manage/article/cdel?article_id=<?php echo $rs['article_id']; ?>&article_child_id=<?php echo $rs['article_child_id']; ?>" onclick="return confirm('确认删除？');">删除</a></i>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <!-- } table -->
+
+        <!-- 分页 { -->
+        <div class="page">
+            <div class="page-view">
+                <?php echo $this->page; ?>
+            </div>
+        </div>
+        <!-- } 分页 -->
+
+    </div>
+</div>
+<!-- } right container -->
+
+
+<?php
+	include($this->_base_name . '/inc/framework_footer.html');
+?>
