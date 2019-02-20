@@ -34,6 +34,12 @@ require __DIR__.'/../vendor/autoload.php';
 | the responses back to the browser and delight our users.
 |
 */
+//将http转化为https
+if ($_SERVER["HTTPS"] <> "on")
+{
+    $xredir="https://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+    header("Location: ".$xredir);
+}
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
