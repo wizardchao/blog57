@@ -23,6 +23,7 @@ class PostController extends Controller
             $item['views'] = mt_rand(1, 10000); // 暂时没有实现文章浏览数逻辑，返回随机数
             $items[] = $item;
         }
+
         $data = [
         'message' => 'success',
         'articles' => $items
